@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './app.css';
-import Page1 from '../../pages/page-1';
+import Wrapper from '../../pages/page-1';
 import { Link, BrowserRouter, Route } from 'react-router-dom';
 import styled from 'styled-components';
+import { LoadingContextDefaultProvider, LoadingContext, LoadingState, withLoadingContext } from '../../contexts/loding';
+import { Loading } from '../../components/loading';
 
 const Nav = styled.div`
   text-align: left;
@@ -23,39 +25,83 @@ const Nav = styled.div`
   }
 `
 
+const RootStyle = styled.div`
+.App {
+  text-align: center;
+}
 
-class App extends Component {
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 5vmin;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 30vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loading{
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background-color: white;
+}
+
+`;
+
+class App extends Component<LoadingState> {
   render() {
     return (
-      <BrowserRouter>
-        <div className="App">
-
-          <header className="App-header">
-            <Nav>
-              <Link to="home">home</Link>
-              <Link to="page-1">Page 1</Link>
-            </Nav>
-            <img src={logo} className="App-logo" alt="logo" />
-            <p>
-              Edit <code>src/App.js</code> and save to reload.
+      <RootStyle>
+        <BrowserRouter>
+          <div className="App">
+            {this.props.isShow ? <div className="loading"><Loading /></div> : ""}
+            <header className="App-header">
+              <Nav>
+                <Link to="home">home</Link>
+                <Link to="page-1">Page 1</Link>
+              </Nav>
+              <img src={logo} className="App-logo" alt="logo" />
+              <p>
+                Edit <code>src/App.js</code> and save to reload.
           </p>
-            <a
-              className="App-link"
-              href="https://reactjs.org"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learn React
+              <a
+                className="App-link"
+                href="https://reactjs.org"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Learn React
           </a>
-          </header>
-          <div>
-            <Route path={"/home"} render={() => <div>wellcome home !</div>} />
-            <Route path={"/page-1"} component={Page1} />
+            </header>
+            <div>
+              <Route path={"/home"} render={() => <div>wellcome home !</div>} />
+              <Route path={"/page-1"} component={Wrapper} />
+            </div>
           </div>
-        </div>
-      </BrowserRouter>
+        </BrowserRouter>
+      </RootStyle>
     );
   }
 }
 
-export default App;
+export default withLoadingContext()(App);

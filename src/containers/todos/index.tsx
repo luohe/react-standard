@@ -1,5 +1,5 @@
 import * as React from "react";
-import { TodoList } from "./todo-list/todo-list";
+import { TodoList } from "../../components/todo-list";
 
 export class Todos extends React.Component {
     public state = {
@@ -33,6 +33,7 @@ export class Todos extends React.Component {
     public render() {
         return (
             <div>
+                
                 <TodoList todos={this.state.todos}>{this.props.children}</TodoList>
                 <input type="text" value={this.state.text} onChange={this.changeText} onKeyPress={this.enter} />
                 <button onClick={this.add}>add</button>
