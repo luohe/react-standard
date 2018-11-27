@@ -4,8 +4,9 @@ import './app.css';
 import Wrapper from '../../pages/page-1';
 import { Link, BrowserRouter, Route } from 'react-router-dom';
 import styled from 'styled-components';
-import { LoadingContextDefaultProvider, LoadingContext, LoadingState, withLoadingContext } from '../../contexts/loding';
+import { LoadingContext, LoadingState } from '../../contexts/loding';
 import { Loading } from '../../components/loading';
+import { withContext } from '../../contexts';
 
 const Nav = styled.div`
   text-align: left;
@@ -104,4 +105,4 @@ class App extends Component<LoadingState> {
   }
 }
 
-export default withLoadingContext()(App);
+export default withContext(LoadingContext)(App);

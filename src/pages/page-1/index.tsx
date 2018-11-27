@@ -3,14 +3,10 @@ import { Todos } from '../../containers/todos';
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 import { PropsType } from '../../reducers/global-state-1';
-import { Store, AppAction, ActionNames, actions } from '../../reducers';
+import { Store, AppAction, ActionNames } from '../../reducers';
 import { UserContext } from '../../contexts/user';
-import { LoadingContext, LoadingState, withLoadingContext } from '../../contexts/loding';
-
-const Wrapper: React.SFC<PropsType<typeof mstp, typeof mdtp>> = function (props) {
-  return (<LoadingContext.Consumer>{({ isShow, show, dissmiss }) => <Page1 {...{ ...props, show, dissmiss, isShow }} />}</LoadingContext.Consumer>);
-}
-
+import { LoadingContext, LoadingState } from '../../contexts/loding';
+import { withContext } from '../../contexts';
 
 class Page1 extends React.Component<PropsType<typeof mstp, typeof mdtp> & LoadingState> {
   render() {
@@ -35,4 +31,4 @@ class Page1 extends React.Component<PropsType<typeof mstp, typeof mdtp> & Loadin
 
 const mstp = (store: Store) => ({ store });
 const mdtp = (dispatch: Dispatch<AppAction>) => ({ dispatch });
-export default connect(mstp, mdtp)(withLoadingContext()(Page1));
+export default withContext(LoadingContext)(connect(mstp, mdtp)(Page1));

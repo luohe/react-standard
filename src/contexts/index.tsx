@@ -1,6 +1,11 @@
 import React from 'react';
 export type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
 
+/** 使用上下文
+ * @author James Zhang
+ * @param {React.Context<S>} 上下文
+ * @returns 带有上下文的HOC
+ */
 export function withContext<S extends any>(Context: React.Context<S>) {
     return function <P extends S>(Component: React.ComponentType<P>) {
         return function (props: Omit<P, keyof S>) {

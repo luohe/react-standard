@@ -11,13 +11,6 @@ export const UserContext = React.createContext(value);
 
 type UserState = typeof value;
 
-/** 添加User到props中
- * @author James Zhang
- */
-export const withUserContext = function(){
-    return withContext(UserContext);
-}
-
 export class UserContextDefaultProvider extends React.Component<{}, UserState, {}>{
     login = async (username: string, password: string) => {
         let user = { name: (count++).toString() } as User;

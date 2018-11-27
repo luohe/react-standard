@@ -1,0 +1,106 @@
+{
+    "extends": [
+        "@gago/tslint-config"
+    ],
+    "rules": {
+        "quotemark": [
+            true,
+            "double"
+        ],
+        "no-unused-variable": false,
+        "strict-boolean-expressions": false,
+        "variable-name": [
+            true,
+            "ban-keywords",
+            "check-format",
+            "allow-trailing-underscore"
+        ],
+        "array-type": [
+            true,
+            "array"
+        ],
+        "naming-convention": [
+            true,
+            {
+                "type": "default",
+                "format": [
+                    "camelCase"
+                ],
+                "leadingUnderscore": "forbid",
+                "trailingUnderscore": "allow"
+            },
+            {
+                "type": "variable",
+                "modifiers": [
+                    "local"
+                ],
+                "format": [
+                    "camelCase"
+                ],
+                "leadingUnderscore": "allow",
+                "final": true
+            },
+            {
+                "type": "variable",
+                "modifiers": [
+                    "global",
+                    "const"
+                ],
+                "format": [
+                    "UPPER_CASE",
+                    "camelCase",
+                    "PascalCase"
+                ]
+            },
+            {
+                "type": "variable",
+                "modifiers": [
+                    "export",
+                    "const"
+                ],
+                "format": [
+                    "UPPER_CASE",
+                    "camelCase",
+                    "PascalCase"
+                ]
+            },
+            {
+                "type": "functionVariable",
+                "format": [
+                    "camelCase"
+                ]
+            },
+            {
+                "type": "parameter",
+                "format": [
+                    "camelCase"
+                ]
+            },
+            {
+                "type": "type",
+                "format": [
+                    "PascalCase"
+                ]
+            },
+            {
+                "type": "enumMember",
+                "format": [
+                    "PascalCase"
+                ]
+            },
+            {
+                "type": "method",
+                "filter": "^toJSON$",
+                "format": null,
+                "trailingUnderscore": "allow"
+            }
+        ]
+    },
+    "linterOptions": {
+        "exclude": [
+            "src/**/*.test.ts",
+            "**/test/**.ts",
+            "**/*.d.ts"
+        ]
+    }
+}

@@ -13,13 +13,6 @@ const value = {
 
 type ThemeState = typeof value;
 
-/** 添加Theme到props中
- * @author James Zhang
- */
-export const withThemeContext = function(){
-    return withContext(ThemeContext);
-}
-
 export const ThemeContext = React.createContext(value);
 
 export class ThemeContextDefaultProvider extends React.Component<{}, ThemeState, {}>{

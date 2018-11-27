@@ -11,14 +11,6 @@ export type LoadingState = typeof value;
 
 export const LoadingContext = React.createContext(value);
 
-/** 添加Loading到props中
- * @author James Zhang
- */
-export const withLoadingContext = function(){
-    return withContext(LoadingContext);
-}
-
-
 export class LoadingContextDefaultProvider extends React.Component<{}, LoadingState, {}>{
     show = () => {
         if (this.state.isShow === false) {
