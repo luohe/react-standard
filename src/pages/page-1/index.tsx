@@ -4,10 +4,11 @@ import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
 import { Store, AppAction, ActionNames } from '../../reducers';
 import { UserContext } from '../../contexts/user';
-import { LoadingContext } from '../../contexts/loding';
+import { LoadingContext, LoadingState } from '../../contexts/loding';
 import { withContext } from '../../contexts';
+import { PropsType } from '../../reducers/global-state-1';
 
-class Page1 extends React.Component<any> {
+class Page1 extends React.Component<PropsType<typeof mstp,typeof mdtp> & LoadingState> {
   render() {
     return (
       <div>
