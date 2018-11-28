@@ -2,13 +2,12 @@ import React from 'react';
 import { Todos } from '../../containers/todos';
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
-import { PropsType } from '../../reducers/global-state-1';
 import { Store, AppAction, ActionNames } from '../../reducers';
 import { UserContext } from '../../contexts/user';
-import { LoadingContext, LoadingState } from '../../contexts/loding';
+import { LoadingContext } from '../../contexts/loding';
 import { withContext } from '../../contexts';
 
-class Page1 extends React.Component<PropsType<typeof mstp, typeof mdtp> & LoadingState> {
+class Page1 extends React.Component<any> {
   render() {
     return (
       <div>
@@ -31,4 +30,4 @@ class Page1 extends React.Component<PropsType<typeof mstp, typeof mdtp> & Loadin
 
 const mstp = (store: Store) => ({ store });
 const mdtp = (dispatch: Dispatch<AppAction>) => ({ dispatch });
-export default withContext(LoadingContext)(connect(mstp, mdtp)(Page1));
+export default connect(mstp, mdtp)(withContext(LoadingContext)(Page1));
