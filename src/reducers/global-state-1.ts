@@ -1,8 +1,5 @@
-import { Action, ReducersMapObject } from "redux";
+import { Action } from "redux";
 import { ActionTypes, ActionNames } from ".";
-
-
-
 
 const initState = {
     /** 动作类型 */

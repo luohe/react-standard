@@ -1,3 +1,10 @@
+# react 标准模板
+## 目录结构
+目录结构功能参考目录中的README.md
+
+
+
+# 创建于
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
