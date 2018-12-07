@@ -101,7 +101,7 @@
             "src/**/*.test.ts",
             "**/test/**.ts",
             "**/*.d.ts",
-            "node_modules"
+            "node_modules/**"
         ]
     }
 }
