@@ -1,6 +1,6 @@
 {
     "extends": [
-        "@gago/tslint-config"
+        "@gago/tslint-config-react"
     ],
     "rules": {
         "quotemark": [
@@ -100,7 +100,8 @@
         "exclude": [
             "src/**/*.test.ts",
             "**/test/**.ts",
-            "**/*.d.ts"
+            "**/*.d.ts",
+            "node_modules"
         ]
     }
 }

@@ -1,19 +1,22 @@
-import React from 'react';
+import React from "react";
 export type Omit<T, K extends keyof T> = Pick<T, Exclude<keyof T, K>>;
+// tslint:disable:variable-name
+// tslint:disable:naming-convention
+// tslint:disable:only-arrow-functions
 
 /** 使用上下文
  * @author James Zhang
  * @param {React.Context<S>} 上下文
  * @returns 带有上下文的HOC
  */
+
 export function withContext<S extends any>(Context: React.Context<S>) {
-    return function <P extends S>(Component: React.ComponentType<P>) {
-        return function (props: Omit<P, keyof S>) {
-            return <Context.Consumer>{
-                (data: S) => <Component {...{ ...props as any, ...data as any }} />
-            }</Context.Consumer>
-        };
+
+  return function <P extends S>(Component: React.ComponentType<P>) {
+    return function(props: Omit<P, keyof S>) {
+      return <Context.Consumer>{(data: S) => <Component {...{ ...props as any, ...data as any }} />}</Context.Consumer>;
     };
+  };
 }
 
 // TODO 下面的写法是尝试兼容decorator，但是失败了，有时间再尝试
@@ -54,7 +57,11 @@ export function withContext<S extends any>(Context: React.Context<S>) {
 // export function withLoadingContext() {
 //     return function <P, C extends React.ComponentType<P>>(Component: C){
 //         return function (props: P) {
-//             return (<LoadingContext.Consumer>{({ isShow, show, dissmiss }) => <Component {...{ ...props as any, show, dissmiss, isShow }} />}</LoadingContext.Consumer>);
+//             return (
+// <LoadingContext.Consumer>
+// { ({ isShow, show, dissmiss }) => <Component {...{ ...props as any, show, dissmiss, isShow }} />; }
+//     </LoadingContext.Consumer >
+// );
 //         };
 //     };
 // }

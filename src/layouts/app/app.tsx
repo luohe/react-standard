@@ -1,13 +1,14 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './app.css';
-import Wrapper from '../../pages/page-1';
-import { Link, BrowserRouter, Route } from 'react-router-dom';
-import styled from 'styled-components';
-import { LoadingContext, LoadingState } from '../../contexts/loding';
-import { Loading } from '../../components/loading';
-import { withContext } from '../../contexts';
-
+import React, { Component } from "react";
+import logo from "./logo.svg";
+import "./app.css";
+import Wrapper from "../../pages/page-1";
+import { Link, BrowserRouter, Route } from "react-router-dom";
+import styled from "styled-components";
+import { LoadingContext, LoadingState } from "../../contexts/loding";
+import { Loading } from "../../components/loading";
+import { withContext } from "../../contexts";
+// tslint:disable:jsx-no-lambda
+// tslint:disable-next-line:variable-name
 const Nav = styled.div`
   text-align: left;
   display: block;
@@ -24,8 +25,9 @@ const Nav = styled.div`
     color: white;
     border: 2px solid white;
   }
-`
+`;
 
+// tslint:disable-next-line:variable-name
 const RootStyle = styled.div`
 .App {
   text-align: center;
@@ -92,7 +94,7 @@ class App extends Component<LoadingState> {
                 rel="noopener noreferrer"
               >
                 Learn React
-          </a>
+              </a>
             </header>
             <div>
               <Route path={"/home"} render={() => <div>wellcome home !</div>} />

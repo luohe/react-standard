@@ -3,22 +3,22 @@ import { ActionTypes, ActionNames } from ".";
 
 const initState = {
     /** 动作类型 */
-    action: "no action"
-}
+  action: "no action",
+};
 
 export function globalState1(state = initState, action: Action<ActionTypes>): State {
-    const type: ActionTypes = action.type;
-    switch (type) {
-        case ActionNames.action1: {
-            return { ...state, action: action.type };
-        }
-        case ActionNames.action2: {
-            return { ...state, action: action.type };
-        }
-        default: {
-            return state;
-        }
+  const type: ActionTypes = action.type;
+  switch (type) {
+    case ActionNames.Action1: {
+      return { ...state, action: action.type };
     }
+    case ActionNames.Action2: {
+      return { ...state, action: action.type };
+    }
+    default: {
+      return state;
+    }
+  }
 
     // if ("action1" === type) {
     //     return { ...state, action: action.type };

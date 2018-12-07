@@ -4,16 +4,16 @@ export type ValueOf<T> = T[keyof T];
 /** ActionTypes */
 export type ActionTypes = ValueOf<typeof ActionNames>;
 
-export type AppAction = Action<ActionTypes>
+export type AppAction = Action<ActionTypes>;
 export const rootReducer = { globalState1 };
 export interface Store {
-    globalState1: State;
-};
+  globalState1: State;
+}
 
 /** 所有的动作 */
 export enum ActionNames {
-    /** action1 */
-    action1 = "1",
-    /** action2 */
-    action2 = "2"
-};
+  /** action1 */
+  Action1 = "1",
+  /** action2 */
+  Action2 = "2",
+}
