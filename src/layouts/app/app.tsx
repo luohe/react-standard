@@ -7,7 +7,23 @@ import styled from "styled-components";
 import { LoadingContext, LoadingState } from "../../contexts/loding";
 import { Loading } from "../../components/loading";
 import { withContext } from "../../contexts";
-// tslint:disable:jsx-no-lambda
+import { Dupont3 } from "../../ui/packages/dupont-3/dupont-3";
+import { RouteConfig } from "../../ui/interface/nav";
+import { globalColorPalette1 } from "../../ui/packages/dupont-3/colors/default";
+// tslint:disable:jsx-no-lambda jsx-no-multiline-js
+
+const routes: RouteConfig[] = [
+  {
+    icon: "i",
+    text: <Link to="home">home</Link>,
+    routes: [],
+  },
+  {
+    icon: "i",
+    text: <Link to="page-1">Page 1</Link>,
+    routes: [],
+  },
+];
 // tslint:disable-next-line:variable-name
 const Nav = styled.div`
   text-align: left;
@@ -29,6 +45,8 @@ const Nav = styled.div`
 
 // tslint:disable-next-line:variable-name
 const RootStyle = styled.div`
+  width: 100%;
+  height: 100%;
 .App {
   text-align: center;
 }
@@ -76,31 +94,23 @@ class App extends Component<LoadingState> {
     return (
       <RootStyle>
         <BrowserRouter>
-          <div className="App">
-            {this.props.isShow ? <div className="loading"><Loading /></div> : ""}
-            <header className="App-header">
-              <Nav>
-                <Link to="home">home</Link>
-                <Link to="page-1">Page 1</Link>
-              </Nav>
-              <img src={logo} className="App-logo" alt="logo" />
-              <p>
-                Edit <code>src/App.js</code> and save to reload.
-          </p>
-              <a
-                className="App-link"
-                href="https://reactjs.org"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Learn React
-              </a>
-            </header>
+          <Dupont3
+            logoConfig={{ logo: "123", miniLogo: "" }}
+            avatarConfig={{
+              userName: "admin",
+              avatar: "",
+              isLogin: true,
+              onClick: () => ({}),
+              onLogout: () => ({}),
+            }}
+            navConfig={{ routes, selected: routes[0], routeOnClick: () => ({}) }}
+            colorPalette={globalColorPalette1}
+          >
             <div>
               <Route path={"/home"} render={() => <div>wellcome home !</div>} />
               <Route path={"/page-1"} component={Wrapper} />
             </div>
-          </div>
+          </Dupont3>
         </BrowserRouter>
       </RootStyle>
     );

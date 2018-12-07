@@ -9,7 +9,6 @@ import { UserContextDefaultProvider } from "./contexts/user";
 import { ThemeContextDefaultProvider } from "./contexts/theme";
 import { LoadingContextDefaultProvider } from "./contexts/loding";
 
-
 ReactDOM.render(
     <Provider store={store}>
         <UserContextDefaultProvider>
@@ -20,7 +19,7 @@ ReactDOM.render(
             </ThemeContextDefaultProvider>
         </UserContextDefaultProvider>
     </Provider>,
-    document.getElementById("root")
+    document.getElementById("root"),
 );
 
 // If you want your app to work offline and load faster, you can change

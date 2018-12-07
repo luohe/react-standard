@@ -5,4 +5,12 @@ export class TodoProvider extends RestProvider<{ text: string; completed: boolea
   constructor() {
     super(new ServerOneServer(), "todo");
   }
+
+  getFilterData(id: string) {
+    Promise.all([
+      this.server.get("").then(),
+      this.server.get(""),
+    ]);
+    return this.server.get("https://www.baidu.com").then();
+  }
 }

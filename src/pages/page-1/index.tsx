@@ -17,7 +17,7 @@ class Page1 extends React.Component<PropsType<typeof mstp, typeof mdtp> & Loadin
         <UserContext.Consumer>
           {({ login }) => (
             <>
-              <Todos/>=
+              <Todos/>
               <button onClick={() => this.props.dispatch({ type: ActionNames.Action1 })}>dispatch action1</button>
               <button onClick={() => this.props.dispatch({ type: ActionNames.Action2 })}>dispatch action2</button>
               <button onClick={() => login("a", "b")}>切换登陆用户</button>

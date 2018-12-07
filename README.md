@@ -2,6 +2,10 @@
 ## 目录结构
 目录结构功能参考目录中的README.md
 
+# typescript 的类型推导
+# context
+# no redux
+# no mobx
 
 
 # 创建于
