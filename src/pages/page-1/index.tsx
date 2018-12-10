@@ -12,7 +12,9 @@ import { Tabs, TabPanel } from "@gago/frame/es/packages/package-1/siders/side-ba
 import { globalColorPalette1 } from "@gago/frame/es/packages/package-1/colors/default";
 import { SimpleCard } from "@gago/frame/es/packages/package-1/cards/simple-card/simple-card";
 import { Row, Col, Checkbox } from "antd";
-
+import { ITable } from "@gago/frame/es/interface/chart";
+import { CropAreaBadge } from "@gago/frame/es/charts/crop-area-badge";
+import { CropAreaChart } from "@gago/frame/es/charts/crop-area-chart";
 interface Crops {
   corn: string;
   other: string;
@@ -42,6 +44,56 @@ class Page1 extends React.Component<PropsType<typeof mstp, typeof mdtp> & Loadin
     if (other) {
       insideActiveSorts.push("other");
     }
+
+    // ITable<2, 1> 表示 data 字段中 除ID外的字符串有2列， 数字有1列
+    const cropAreaChartTable: ITable<2, 1> = {
+      title: "种植面积（万亩）",
+      subtitle: "",
+      description: "",
+      defaultValue: [0, 0, 0, 0],
+
+      // range 的每一列与 data 字段的每一列一一对应
+      // 其中 ["玉米", "其他"]表示 data 字段中第一列的集合，用来展示图表的图例和区分类别，为必填
+      // ["2015", "2016", "2017"] 表示纵坐标
+      range: [[], ["玉米", "其他"], ["2015", "2016", "2017"], []],
+
+      // head 表示 data 每一列数据的意义
+      head: ["ID", "作物名称", "年份", "种植面积（万亩）"],
+
+      // 第一列表示 ID
+      // 第二列表示 作物名称
+      // 第三列表示 年份
+      // 第四列表示 某一作物的种植面积
+      data: [
+        ["0", "玉米", "2017", 38.1],
+        ["1", "玉米", "2016", 46.1],
+        ["2", "玉米", "2015", 12.3],
+        ["3", "其他", "2017", 32.1],
+        ["4", "其他", "2016", 22.1],
+        ["5", "其他", "2015", 12.4]
+      ],
+    };
+
+    const cropAreaBadgeTable: ITable<1, 2> = {
+      title: "种植面积（万亩）",
+      subtitle: "",
+      description: "",
+      defaultValue: [0, 0, 0, 0],
+      range: [[], ["玉米", "其他"], [], []],
+
+      // head 表示 data 每一列数据的意义
+      head: ["ID", "作物名称", "变化趋势", "种植面积（万亩）"],
+
+      // 第一列表示 ID
+      // 第二列表示 作物名称
+      // 第三列表示 某一作物的某一年与前一年的面积变化趋势，公式：（今年x作物面积 - 去年x作物面积）/ 今年x作物面积
+      // 第四列表示 某一作物的种植面积
+      data: [
+        ["0", "玉米", -0.096, 39.0],
+        ["1", "其他", 0.495, 7.8],
+      ],
+    };
+
     return (
       <div>
         <MapPosition
@@ -79,7 +131,7 @@ class Page1 extends React.Component<PropsType<typeof mstp, typeof mdtp> & Loadin
             textFiled="{Town}"
             // onClick={onClickLayer}
         />
-        <Tabs colorPalette={globalColorPalette1}>
+        <Tabs key="1" colorPalette={globalColorPalette1}>
           <TabPanel tab="第一个" key="1" >
           <SimpleCard colorPalette={globalColorPalette1} rightComponent={null}>
             <UserContext.Consumer>
@@ -94,6 +146,15 @@ class Page1 extends React.Component<PropsType<typeof mstp, typeof mdtp> & Loadin
               </>
             )}
           </UserContext.Consumer>
+        </SimpleCard>
+            <SimpleCard colorPalette={globalColorPalette1} rightComponent={null}>
+              <CropAreaBadgeCard colorPalette={globalColorPalette1} chartData={cropAreaBadgeTable} />
+            </SimpleCard>
+        <SimpleCard colorPalette={globalColorPalette1} rightComponent={null}>
+            
+            <div style={{height: 200}}>
+                <CropAreaChartCard colorPalette={globalColorPalette1} chartData={cropAreaChartTable} />
+            </div>
         </SimpleCard>
         <SimpleCard colorPalette={globalColorPalette1} rightComponent={null}>
         <Row>
