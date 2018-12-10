@@ -8,9 +8,9 @@ import { LoadingContext, LoadingState } from "../../contexts/loding";
 import { withContext } from "../../contexts";
 import { PropsType } from "../../reducers/global-state-1";
 import { ClassificationLayer, WrapGeojsonLayer, BaseLayer, MapPosition } from "@gago-react-gl/gago-react-gl";
-import { Tabs, TabPanel } from "@gago/frame/es/packages/package-1/siders/side-bar";
-import { globalColorPalette1 } from "@gago/frame/es/packages/package-1/colors/default";
-import { SimpleCard } from "@gago/frame/es/packages/package-1/cards/simple-card/simple-card";
+import { Tabs, TabPanel } from "@gago/frame/es/siders/side-bar";
+import { globalColorPalette1 } from "@gago/frame/es/colors/default";
+import { SimpleCard } from "@gago/frame/es/cards/simple-card/simple-card";
 import { Row, Col, Checkbox } from "antd";
 
 interface Crops {
@@ -80,7 +80,7 @@ class Page1 extends React.Component<PropsType<typeof mstp, typeof mdtp> & Loadin
             // onClick={onClickLayer}
         />
         <Tabs colorPalette={globalColorPalette1}>
-          <TabPanel tab="第一个" key="1" >
+          <TabPanel title="第一个" key="1" >
           <SimpleCard colorPalette={globalColorPalette1} rightComponent={null}>
             <UserContext.Consumer>
             {({ login }) => (
