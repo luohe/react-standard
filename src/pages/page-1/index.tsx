@@ -8,9 +8,9 @@ import { LoadingContext, LoadingState } from "../../contexts/loding";
 import { withContext } from "../../contexts";
 import { PropsType } from "../../reducers/global-state-1";
 import { ClassificationLayer, WrapGeojsonLayer, BaseLayer, MapPosition } from "@gago-react-gl/gago-react-gl";
-import { Tabs, TabPanel } from "@gago/frame/es/packages/package-1/siders/side-bar";
-import { globalColorPalette1 } from "@gago/frame/es/packages/package-1/colors/default";
-import { SimpleCard } from "@gago/frame/es/packages/package-1/cards/simple-card/simple-card";
+import { Tabs, TabPanel } from "@gago/frame/es/siders/side-bar";
+import { globalColorPalette1 } from "@gago/frame/es/colors/default";
+import { SimpleCard } from "@gago/frame/es/cards/simple-card/simple-card";
 import { Row, Col, Checkbox } from "antd";
 import { ITable } from "@gago/frame/es/interface/chart";
 import { CropAreaBadge } from "@gago/frame/es/charts/crop-area-badge";
@@ -131,8 +131,8 @@ class Page1 extends React.Component<PropsType<typeof mstp, typeof mdtp> & Loadin
             textFiled="{Town}"
             // onClick={onClickLayer}
         />
-        <Tabs key="1" colorPalette={globalColorPalette1}>
-          <TabPanel tab="第一个" key="1" >
+        <Tabs colorPalette={globalColorPalette1}>
+          <TabPanel title="第一个" key="1" >
           <SimpleCard colorPalette={globalColorPalette1} rightComponent={null}>
             <UserContext.Consumer>
             {({ login }) => (
@@ -148,12 +148,12 @@ class Page1 extends React.Component<PropsType<typeof mstp, typeof mdtp> & Loadin
           </UserContext.Consumer>
         </SimpleCard>
             <SimpleCard colorPalette={globalColorPalette1} rightComponent={null}>
-              <CropAreaBadgeCard colorPalette={globalColorPalette1} chartData={cropAreaBadgeTable} />
+              <CropAreaBadge colorPalette={globalColorPalette1} chartData={cropAreaBadgeTable} />
             </SimpleCard>
         <SimpleCard colorPalette={globalColorPalette1} rightComponent={null}>
             
             <div style={{height: 200}}>
-                <CropAreaChartCard colorPalette={globalColorPalette1} chartData={cropAreaChartTable} />
+                <CropAreaChart colorPalette={globalColorPalette1} chartData={cropAreaChartTable} />
             </div>
         </SimpleCard>
         <SimpleCard colorPalette={globalColorPalette1} rightComponent={null}>

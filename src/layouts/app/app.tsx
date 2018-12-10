@@ -6,11 +6,11 @@ import { Link, BrowserRouter, Route } from "react-router-dom";
 import styled from "styled-components";
 import { LoadingContext, LoadingState } from "../../contexts/loding";
 import { Loading } from "../../components/loading";
-import { Package1Root } from "@gago/frame/es/packages/package-1";
-import { globalColorPalette1 } from "@gago/frame/es/packages/package-1/colors/default";
+import { Package1Root } from "@gago/frame/es/app-roots/app-root-1";
+import { globalColorPalette1 } from "@gago/frame/es/colors/default";
 import { withContext } from "../../contexts";
 import { RouteConfig } from "@gago/frame/es/interface/nav";
-import { MapboxProvider, MapGL, mapDefault } from "@gago-react-gl/gago-react-gl"
+import { MapboxProvider, MapGL, mapDefault } from "@gago-react-gl/gago-react-gl";
 // tslint:disable:jsx-no-lambda jsx-no-multiline-js
 
 const routes: RouteConfig[] = [
