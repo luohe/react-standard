@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@gago/frame": "^1.0.3",
     "@gago/tslint-config-react": "^1.2.3",
     "@types/jest": "^23.3.9",
     "@types/lodash": "^4.14.118",

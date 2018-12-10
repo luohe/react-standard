@@ -6,10 +6,10 @@ import { Link, BrowserRouter, Route } from "react-router-dom";
 import styled from "styled-components";
 import { LoadingContext, LoadingState } from "../../contexts/loding";
 import { Loading } from "../../components/loading";
+import { Package1Root } from "@gago/frame/es/packages/package-1";
+import { globalColorPalette1 } from "@gago/frame/es/packages/package-1/colors/default";
 import { withContext } from "../../contexts";
-import { Dupont3 } from "../../ui/packages/dupont-3/dupont-3";
-import { RouteConfig } from "../../ui/interface/nav";
-import { globalColorPalette1 } from "../../ui/packages/dupont-3/colors/default";
+import { RouteConfig } from "@gago/frame/es/interface/nav";
 // tslint:disable:jsx-no-lambda jsx-no-multiline-js
 
 const routes: RouteConfig[] = [
@@ -94,8 +94,8 @@ class App extends Component<LoadingState> {
     return (
       <RootStyle>
         <BrowserRouter>
-          <Dupont3
-            logoConfig={{ logo: "123", miniLogo: "" }}
+          <Package1Root
+            logoConfig={{ logo: "123", miniLogo: "mini" }}
             avatarConfig={{
               userName: "admin",
               avatar: "",
@@ -110,7 +110,7 @@ class App extends Component<LoadingState> {
               <Route path={"/home"} render={() => <div>wellcome home !</div>} />
               <Route path={"/page-1"} component={Wrapper} />
             </div>
-          </Dupont3>
+          </Package1Root>
         </BrowserRouter>
       </RootStyle>
     );
