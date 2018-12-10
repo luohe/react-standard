@@ -33,6 +33,7 @@ export class Dupont3 extends React.Component<AppRootProps & AvatarProps & NavPro
 
   public render() {
     return (
+      // tslint:disable:jsx-alignment jsx-no-multiline-js
       <FrameComponent leftComponent={
         <NavSider
           colorPalette={this.props.colorPalette}
@@ -40,18 +41,18 @@ export class Dupont3 extends React.Component<AppRootProps & AvatarProps & NavPro
           navConfig={{
             routes: this.props.navConfig.routes,
             selected: this.props.navConfig.selected,
-            routeOnClick: this.topChangeRouter
+            routeOnClick: this.topChangeRouter,
           }}
           avatarConfig={{
             ...this.props.avatarConfig,
             userName:
               <Popover
                 placement="topRight"
-                style={{ backgroundColor: this.props.colorPalette.mainColor[9] ,color: this.props.colorPalette.whiteColor[5]}}
+                style={{ backgroundColor: this.props.colorPalette.mainColor[9] , color: this.props.colorPalette.whiteColor[5] }}
                 content={
                   <div>
                     <div>
-                      <a href="javascript:void(0)" onClick={this.props.avatarConfig.onLogout}>退出</a>
+                      <a onClick={this.props.avatarConfig.onLogout}>退出</a>
                     </div>
                   </div>
                 }
@@ -64,13 +65,13 @@ export class Dupont3 extends React.Component<AppRootProps & AvatarProps & NavPro
                 content={
                   <div>
                     <div>
-                      <a href="javascript:void(0)" onClick={this.props.avatarConfig.onLogout}>退出</a>
+                      <a onClick={this.props.avatarConfig.onLogout}>退出</a>
                     </div>
                   </div>
                 }
               >
                 {this.props.avatarConfig.avatar}
-              </Popover>
+              </Popover>,
           }}
         />}>
         {this.props.children}

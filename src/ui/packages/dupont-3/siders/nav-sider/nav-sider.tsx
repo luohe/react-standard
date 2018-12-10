@@ -140,6 +140,7 @@ export class NavSider extends React.Component<NavSiderProps, State> implements B
           }
       }
       .nav-text *{
+        display: inline-block;
         width: 100%;
       }
     }
