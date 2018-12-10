@@ -10,6 +10,7 @@ import { Package1Root } from "@gago/frame/es/packages/package-1";
 import { globalColorPalette1 } from "@gago/frame/es/packages/package-1/colors/default";
 import { withContext } from "../../contexts";
 import { RouteConfig } from "@gago/frame/es/interface/nav";
+import { MapboxProvider, MapGL, mapDefault } from "@gago-react-gl/gago-react-gl"
 // tslint:disable:jsx-no-lambda jsx-no-multiline-js
 
 const routes: RouteConfig[] = [
@@ -94,6 +95,7 @@ class App extends Component<LoadingState> {
     return (
       <RootStyle>
         <BrowserRouter>
+        <MapboxProvider>
           <Package1Root
             logoConfig={{ logo: "123", miniLogo: "mini" }}
             avatarConfig={{
@@ -106,11 +108,12 @@ class App extends Component<LoadingState> {
             navConfig={{ routes, selected: routes[0], routeOnClick: () => ({}) }}
             colorPalette={globalColorPalette1}
           >
-            <div>
+            <MapGL {...mapDefault}>
               <Route path={"/home"} render={() => <div>wellcome home !</div>} />
               <Route path={"/page-1"} component={Wrapper} />
-            </div>
+            </MapGL>
           </Package1Root>
+          </MapboxProvider>
         </BrowserRouter>
       </RootStyle>
     );
