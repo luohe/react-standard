@@ -133,44 +133,63 @@ class Page1 extends React.Component<PropsType<typeof mstp, typeof mdtp> & Loadin
         />
         <Tabs colorPalette={globalColorPalette1}>
           <TabPanel title="第一个" key="1" >
-          <Card1 colorPalette={globalColorPalette1} rightComponent={null}>
-            <UserContext.Consumer>
-            {({ login }) => (
-              <>
-                <Todos/>
-                <button onClick={() => this.props.dispatch({ type: ActionNames.Action1 })}>dispatch action1</button>
-                <button onClick={() => this.props.dispatch({ type: ActionNames.Action2 })}>dispatch action2</button>
-                <button onClick={() => login("a", "b")}>切换登陆用户</button>
-                <button onClick={() => { this.props.show(); setTimeout(() => this.props.dissmiss(), 2000); }}>3秒加载中...</button>
-                <div>{this.props.store.globalState1.action}</div>
-              </>
-            )}
-          </UserContext.Consumer>
-        </Card1>
-            <Card1 colorPalette={globalColorPalette1} rightComponent={null}>
+            <Card1
+              title="卡片一"
+              showExpandButton
+              colorPalette={globalColorPalette1}
+              rightComponent={null}
+            >
+              <UserContext.Consumer>
+                {({ login }) => (
+                  <>
+                    <Todos/>
+                    <button onClick={() => this.props.dispatch({ type: ActionNames.Action1 })}>dispatch action1</button>
+                    <button onClick={() => this.props.dispatch({ type: ActionNames.Action2 })}>dispatch action2</button>
+                    <button onClick={() => login("a", "b")}>切换登陆用户</button>
+                    <button onClick={() => { this.props.show(); setTimeout(() => this.props.dissmiss(), 2000); }}>3秒加载中...</button>
+                    <div>{this.props.store.globalState1.action}</div>
+                  </>
+                )}
+              </UserContext.Consumer>
+            </Card1>
+            <Card1
+              title="图表一"
+              showExpandButton
+              colorPalette={globalColorPalette1}
+              rightComponent={null}
+            >
               <CropAreaBadge colorPalette={globalColorPalette1} chartData={cropAreaBadgeTable} />
             </Card1>
-        <Card1 colorPalette={globalColorPalette1} rightComponent={null}>
-
-            <div style={{ height: 200 }}>
-                <CropAreaChart colorPalette={globalColorPalette1} chartData={cropAreaChartTable} />
-            </div>
-        </Card1>
-        <Card1 colorPalette={globalColorPalette1} rightComponent={null}>
-        <Row>
-          <Col span={24}>
-            <Checkbox checked={corn} onChange={this.triggerCorn_}>
-              玉米
-            </Checkbox>
-          </Col>
-          <Col span={24}>
-            <Checkbox checked={other} onChange={this.triggerOther_}>
-              其他
-            </Checkbox>
-          </Col>
-        </Row>
-        </Card1>
-        </TabPanel>
+            <Card1
+              title="图表二"
+              showExpandButton
+              colorPalette={globalColorPalette1}
+              rightComponent={null}
+            >
+                <div style={{ height: 200 }}>
+                    <CropAreaChart colorPalette={globalColorPalette1} chartData={cropAreaChartTable} />
+                </div>
+            </Card1>
+            <Card1
+              title="图表三"
+              showExpandButton
+              colorPalette={globalColorPalette1}
+              rightComponent={null}
+            >
+              <Row>
+                <Col span={24}>
+                  <Checkbox checked={corn} onChange={this.triggerCorn_}>
+                    玉米
+                  </Checkbox>
+                </Col>
+                <Col span={24}>
+                  <Checkbox checked={other} onChange={this.triggerOther_}>
+                    其他
+                  </Checkbox>
+                </Col>
+              </Row>
+            </Card1>
+          </TabPanel>
         </Tabs>
       </div>
     );
