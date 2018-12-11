@@ -1,27 +1,38 @@
 import React, { Component } from "react";
+import "./index.css";
 import logo from "./logo.svg";
-import "./app.css";
 import Wrapper from "../../pages/page-1";
-import { Link, BrowserRouter, Route } from "react-router-dom";
+import { Link, Route, withRouter, RouteComponentProps, Redirect } from "react-router-dom";
 import styled from "styled-components";
 import { LoadingContext, LoadingState } from "../../contexts/loding";
-import { Loading } from "../../components/loading";
-import { Package1Root } from "@gago/frame/es/app-roots/app-root-1";
+import { AppRoot1 } from "@gago/frame/es/app-roots/app-root-1";
 import { globalColorPalette1 } from "@gago/frame/es/colors/default";
 import { withContext } from "../../contexts";
 import { RouteConfig } from "@gago/frame/es/interface/nav";
 import { MapboxProvider, MapGL, mapDefault } from "@gago-react-gl/gago-react-gl";
+import { flatMapDeep } from "lodash";
 // tslint:disable:jsx-no-lambda jsx-no-multiline-js
+// tslint:disable-next-line:variable-name
+const Logo = styled.div`
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  background: url(${logo}) no-repeat;
+  background-size: contain;
+  background-position: center;
+`;
 
 const routes: RouteConfig[] = [
   {
+    key: "/home",
     icon: "i",
-    text: <Link to="home">home</Link>,
+    text: <Link to="/home">home</Link>,
     routes: [],
   },
   {
+    key: "/page-1",
     icon: "i",
-    text: <Link to="page-1">Page 1</Link>,
+    text: <Link to="/page-1">Page 1</Link>,
     routes: [],
   },
 ];
@@ -90,14 +101,15 @@ const RootStyle = styled.div`
 
 `;
 
-class App extends Component<LoadingState> {
+class App extends Component<LoadingState & RouteComponentProps> {
   render() {
+    const flatten = flatMapDeep(routes, (route) => [route, ...route.routes]);
+    const selectedRoute: RouteConfig = flatten.filter(route => route.key === this.props.location.pathname)[0];
     return (
       <RootStyle>
-        <BrowserRouter>
         <MapboxProvider>
-          <Package1Root
-            logoConfig={{ logo: "123", miniLogo: "mini" }}
+          <AppRoot1
+            logoConfig={{ logo: <Logo/>, miniLogo: <Logo/> }}
             avatarConfig={{
               userName: "admin",
               avatar: "",
@@ -105,19 +117,19 @@ class App extends Component<LoadingState> {
               onClick: () => ({}),
               onLogout: () => ({}),
             }}
-            navConfig={{ routes, selected: routes[0], routeOnClick: () => ({}) }}
+            navConfig={{ routes, selected: selectedRoute ? selectedRoute.key : "", routeOnClick: () => ({}) }}
             colorPalette={globalColorPalette1}
           >
             <MapGL {...mapDefault}>
+              <Redirect path={"/"} to={"/page-1"}/>
               <Route path={"/home"} render={() => <div>wellcome home !</div>} />
               <Route path={"/page-1"} component={Wrapper} />
             </MapGL>
-          </Package1Root>
+          </AppRoot1>
           </MapboxProvider>
-        </BrowserRouter>
       </RootStyle>
     );
   }
 }
 
-export default withContext(LoadingContext)(App);
+export default withRouter(withContext(LoadingContext)(App));

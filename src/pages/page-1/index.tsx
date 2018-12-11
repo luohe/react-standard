@@ -10,7 +10,7 @@ import { PropsType } from "../../reducers/global-state-1";
 import { ClassificationLayer, WrapGeojsonLayer, BaseLayer, MapPosition } from "@gago-react-gl/gago-react-gl";
 import { Tabs, TabPanel } from "@gago/frame/es/siders/side-bar";
 import { globalColorPalette1 } from "@gago/frame/es/colors/default";
-import { SimpleCard } from "@gago/frame/es/cards/simple-card/simple-card";
+import { Card1 } from "@gago/frame/es/cards/card-1";
 import { Row, Col, Checkbox } from "antd";
 import { ITable } from "@gago/frame/es/interface/chart";
 import { CropAreaBadge } from "@gago/frame/es/charts/crop-area-badge";
@@ -70,7 +70,7 @@ class Page1 extends React.Component<PropsType<typeof mstp, typeof mdtp> & Loadin
         ["2", "玉米", "2015", 12.3],
         ["3", "其他", "2017", 32.1],
         ["4", "其他", "2016", 22.1],
-        ["5", "其他", "2015", 12.4]
+        ["5", "其他", "2015", 12.4],
       ],
     };
 
@@ -133,7 +133,7 @@ class Page1 extends React.Component<PropsType<typeof mstp, typeof mdtp> & Loadin
         />
         <Tabs colorPalette={globalColorPalette1}>
           <TabPanel title="第一个" key="1" >
-          <SimpleCard colorPalette={globalColorPalette1} rightComponent={null}>
+          <Card1 colorPalette={globalColorPalette1} rightComponent={null}>
             <UserContext.Consumer>
             {({ login }) => (
               <>
@@ -146,17 +146,17 @@ class Page1 extends React.Component<PropsType<typeof mstp, typeof mdtp> & Loadin
               </>
             )}
           </UserContext.Consumer>
-        </SimpleCard>
-            <SimpleCard colorPalette={globalColorPalette1} rightComponent={null}>
+        </Card1>
+            <Card1 colorPalette={globalColorPalette1} rightComponent={null}>
               <CropAreaBadge colorPalette={globalColorPalette1} chartData={cropAreaBadgeTable} />
-            </SimpleCard>
-        <SimpleCard colorPalette={globalColorPalette1} rightComponent={null}>
-            
-            <div style={{height: 200}}>
+            </Card1>
+        <Card1 colorPalette={globalColorPalette1} rightComponent={null}>
+
+            <div style={{ height: 200 }}>
                 <CropAreaChart colorPalette={globalColorPalette1} chartData={cropAreaChartTable} />
             </div>
-        </SimpleCard>
-        <SimpleCard colorPalette={globalColorPalette1} rightComponent={null}>
+        </Card1>
+        <Card1 colorPalette={globalColorPalette1} rightComponent={null}>
         <Row>
           <Col span={24}>
             <Checkbox checked={corn} onChange={this.triggerCorn_}>
@@ -169,10 +169,9 @@ class Page1 extends React.Component<PropsType<typeof mstp, typeof mdtp> & Loadin
             </Checkbox>
           </Col>
         </Row>
-        </SimpleCard>
+        </Card1>
         </TabPanel>
         </Tabs>
-
       </div>
     );
   }
