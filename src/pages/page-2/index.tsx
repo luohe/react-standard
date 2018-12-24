@@ -131,52 +131,29 @@ class Page1 extends React.Component<PropsType<typeof mstp, typeof mdtp> & Loadin
             // onClick={onClickLayer}
         />
         <Tabs colorPalette={globalColorPalette1}>
-          <TabPanel key="a" title="卡片一">
+          <TabPanel title="第一个" key="1" >
             <Card1
-              title="图表一"
+              title="卡片一"
               showExpandButton
               colorPalette={globalColorPalette1}
               rightComponent={null}
             >
-              <CropAreaBadge colorPalette={globalColorPalette1} chartData={cropAreaBadgeTable} />
-            </Card1>
-            <Card1
-              title="图表二"
-              showExpandButton
-              colorPalette={globalColorPalette1}
-              rightComponent={null}
-            >
-                <div style={{ height: 200 }}>
-                    <CropAreaChart colorPalette={globalColorPalette1} chartData={cropAreaChartTable} />
-                </div>
-            </Card1>
-            <Card1
-              title="图表三"
-              showExpandButton
-              colorPalette={globalColorPalette1}
-              rightComponent={null}
-            >
-              <Row>
-                <Col span={24}>
-                  <Checkbox checked={corn} onChange={this.triggerCorn_}>
-                    玉米
-                  </Checkbox>
-                </Col>
-                <Col span={24}>
-                  <Checkbox checked={other} onChange={this.triggerOther_}>
-                    其他
-                  </Checkbox>
-                </Col>
-              </Row>
-            </Card1>
-          </TabPanel>
-          <TabPanel key="b" title="卡片二">
-            <Card1 title="卡片二" colorPalette={globalColorPalette1}>
-              卡片二
+              <UserContext.Consumer>
+                {({ login }) => (
+                  <>
+                    <Todos/>
+                    <button onClick={() => this.props.dispatch({ type: ActionNames.Action1 })}>dispatch action1</button>
+                    <button onClick={() => this.props.dispatch({ type: ActionNames.Action2 })}>dispatch action2</button>
+                    <button onClick={() => login("a", "b")}>切换登陆用户</button>
+                    <button onClick={() => { this.props.show(); setTimeout(() => this.props.dissmiss(), 2000); }}>3秒加载中...</button>
+                    <div>{this.props.store.globalState1.action}</div>
+                  </>
+                )}
+              </UserContext.Consumer>
             </Card1>
           </TabPanel>
         </Tabs>
-      </div >
+      </div>
     );
   }
   private triggerCorn_ = () => {
@@ -189,4 +166,4 @@ class Page1 extends React.Component<PropsType<typeof mstp, typeof mdtp> & Loadin
 
 const mstp = (store: Store) => ({ store });
 const mdtp = (dispatch: Dispatch<AppAction>) => ({ dispatch });
-export default withContext(LoadingContext)(Page1);
+export default connect(mstp, mdtp)(withContext(LoadingContext)(Page1));

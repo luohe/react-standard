@@ -1,7 +1,5 @@
 import React, { Component } from "react";
-import "./index.css";
 import logo from "./logo.svg";
-import Wrapper from "../../pages/page-1";
 import { Link, Route, withRouter, RouteComponentProps, Redirect } from "react-router-dom";
 import styled from "styled-components";
 import { LoadingContext, LoadingState } from "../../contexts/loding";
@@ -9,8 +7,11 @@ import { AppRoot1 } from "@gago/frame/es/app-roots/app-root-1";
 import { globalColorPalette1 } from "@gago/frame/es/colors/default";
 import { withContext } from "../../contexts";
 import { RouteConfig } from "@gago/frame/es/interface/nav";
-import { MapboxProvider, MapGL, mapDefault } from "@gago-react-gl/gago-react-gl";
+import { MapboxProvider, MapGL, mapDefault, BaseLayer, WrapGeojsonLayer } from "@gago-react-gl/gago-react-gl";
 import { flatMapDeep } from "lodash";
+import { Icon } from "antd";
+import Page2 from "../../pages/page-2";
+import Page1 from "../../pages/page-1";
 // tslint:disable:jsx-no-lambda jsx-no-multiline-js
 // tslint:disable-next-line:variable-name
 const Logo = styled.div`
@@ -25,14 +26,20 @@ const Logo = styled.div`
 const routes: RouteConfig[] = [
   {
     key: "/home",
-    icon: "i",
+    icon: <Link to="/home"><Icon type="home"/></Link>,
     text: <Link to="/home">home</Link>,
     routes: [],
   },
   {
     key: "/page-1",
-    icon: "i",
+    icon: <Link to="/page-1"><Icon type="bars"/></Link>,
     text: <Link to="/page-1">Page 1</Link>,
+    routes: [],
+  },
+  {
+    key: "/page-2",
+    icon: <Link to="/page-2"><Icon type="bars"/></Link>,
+    text: <Link to="/page-2">redux</Link>,
     routes: [],
   },
 ];
@@ -105,6 +112,7 @@ class App extends Component<LoadingState & RouteComponentProps> {
   render() {
     const flatten = flatMapDeep(routes, (route) => [route, ...route.routes]);
     const selectedRoute: RouteConfig = flatten.filter(route => route.key === this.props.location.pathname)[0];
+    const selectedRouteKey = selectedRoute ? selectedRoute.key : "";
     return (
       <RootStyle>
         <MapboxProvider>
@@ -112,18 +120,21 @@ class App extends Component<LoadingState & RouteComponentProps> {
             logoConfig={{ logo: <Logo/>, miniLogo: <Logo/> }}
             avatarConfig={{
               userName: "admin",
-              avatar: "",
+              avatar: <Icon type="user"/>,
               isLogin: true,
               onClick: () => ({}),
               onLogout: () => ({}),
             }}
-            navConfig={{ routes, selected: selectedRoute ? selectedRoute.key : "", routeOnClick: () => ({}) }}
+            navConfig={{ routes, selected: selectedRouteKey, routeOnClick: () => ({}) }}
             colorPalette={globalColorPalette1}
+            navAutoHide={selectedRouteKey === "/home"}
           >
             <MapGL {...mapDefault}>
+              <BaseLayer id="base-layer" type="Google_Normal_Map"/>
               <Redirect path={"/"} to={"/page-1"}/>
               <Route path={"/home"} render={() => <div>wellcome home !</div>} />
-              <Route path={"/page-1"} component={Wrapper} />
+              <Route path={"/page-1"} component={Page1} />
+              <Route path={"/page-2"} component={Page2} />
             </MapGL>
           </AppRoot1>
           </MapboxProvider>
