@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import logo from "./logo.svg";
-import { Link, Route, withRouter, RouteComponentProps, Redirect } from "react-router-dom";
+import { Link, Route, withRouter, RouteComponentProps, Redirect, Switch } from "react-router-dom";
 import styled from "styled-components";
 import { LoadingContext, LoadingState } from "../../contexts/loding";
 import { AppRoot1 } from "@gago/frame/es/app-roots/app-root-1";
@@ -12,6 +12,7 @@ import { Icon } from "antd";
 import Page2 from "../../pages/page-2";
 import Page1 from "../../pages/page-1";
 import { colorPalette } from "../../color-palette";
+import Home from "../../pages/home";
 // tslint:disable:jsx-no-lambda jsx-no-multiline-js
 // tslint:disable:variable-name
 
@@ -148,13 +149,15 @@ class App extends Component<LoadingState & RouteComponentProps> {
             colorPalette={colorPalette}
             navAutoHide={selectedRouteKey === "/home"}
           >
-            <MapGL {...mapDefault}>
-              <BaseLayer id="base-layer" type="Google_Normal_Map"/>
-              <Redirect path={"/"} to={"/page-1"}/>
-              <Route path={"/home"} render={() => <div>wellcome home !</div>} />
-              <Route path={"/page-1"} component={Page1} />
-              <Route path={"/page-2"} component={Page2} />
-            </MapGL>
+            <Switch>
+              <MapGL {...mapDefault}>
+                <BaseLayer id="base-layer" type="Google_Normal_Map"/>
+                <Route path={"/home"} component={Home} />
+                <Route path={"/page-1"} component={Page1} />
+                <Route path={"/page-2"} component={Page2} />
+                <Redirect path={"/"} to={"/page-1"}/>
+              </MapGL>
+            </Switch>
           </AppRoot1>
           </MapboxProvider>
       </RootStyle>

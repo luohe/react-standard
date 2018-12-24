@@ -1,6 +1,5 @@
 import React from "react";
 import { User } from "../models/user";
-import { Omit, withContext } from ".";
 
 let count = 0;
 const value = {

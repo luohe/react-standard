@@ -6,7 +6,7 @@ export class TodoProvider extends RestProvider<{ text: string; completed: boolea
     super(new ServerOneServer(), "todo");
   }
 
-  getFilterData(id: string) {
+  async getFilterData(id: string) {
     Promise.all([
       this.server.get("").then(),
       this.server.get(""),

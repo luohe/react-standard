@@ -22,7 +22,6 @@ export class Todos extends React.Component {
   }
 
   public enter = (event: React.KeyboardEvent<HTMLInputElement>) => {
-    // tslint:disable-next-line:no-console
     if (event.key === "Enter") {
       this.add();
     }

@@ -1,13 +1,10 @@
 import React from "react";
-import { Todos } from "../../containers/todos";
-import { connect } from "react-redux";
 import { Dispatch } from "redux";
-import { Store, AppAction, ActionNames } from "../../reducers";
-import { UserContext } from "../../contexts/user";
+import { Store, AppAction } from "../../reducers";
 import { LoadingContext, LoadingState } from "../../contexts/loding";
 import { withContext } from "../../contexts";
 import { PropsType } from "../../reducers/global-state-1";
-import { ClassificationLayer, WrapGeojsonLayer, BaseLayer, MapPosition } from "@gago-react-gl/gago-react-gl";
+import { ClassificationLayer, WrapGeojsonLayer, MapPosition } from "@gago-react-gl/gago-react-gl";
 import { Tabs, TabPanel } from "@gago/frame/es/siders/side-bar";
 import { Card1 } from "@gago/frame/es/cards/card-1";
 import { Row, Col, Checkbox } from "antd";
@@ -29,6 +26,14 @@ interface CropState {
 const triggerCorn = (state: CropState) => ({ corn: !state.corn });
 const triggerOther = (state: CropState) => ({ other: !state.other });
 
+/**
+ * 演示地图，图表的使用
+ *
+ * @author 张卓诚
+ * @date 2018-12-24
+ * @class Page1
+ * @extends {(React.Component<PropsType<typeof mstp, typeof mdtp> & LoadingState & CropState>)}
+ */
 class Page1 extends React.Component<PropsType<typeof mstp, typeof mdtp> & LoadingState & CropState> {
   state: CropState = {
     corn: true,

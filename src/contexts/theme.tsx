@@ -1,5 +1,4 @@
 import React from "react";
-import { Omit, withContext } from ".";
 
 let count = 0;
 const value = {

@@ -8,7 +8,7 @@
  * ----------	---------	-------------------------------------------------------
  */
 
-import Axios, { AxiosResponse, AxiosRequestConfig} from "axios";
+import Axios, { AxiosResponse, AxiosRequestConfig } from "axios";
 
 function rejectedInterceptor(error: any) {
   console.error(error);
@@ -51,10 +51,10 @@ export class HttpClient {
 
   async download<T = any>(url: string, config?: AxiosRequestConfig): Promise<AxiosResponse<T>> {
     return Axios({
-      url: url,
+      url,
       method: "GET",
       responseType: "blob",
-      ...config
+      ...config,
     });
   }
 
