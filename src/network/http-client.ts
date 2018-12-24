@@ -19,17 +19,7 @@ Axios.interceptors.request.use(async (arc: AxiosRequestConfig) => {
 }, rejectedInterceptor);
 
 Axios.interceptors.response.use((ar: AxiosResponse) => {
-  const { data } = ar;
-  if (!data) {
-    return ar;
-  }
-  if (data.error) {
-    return Promise.reject(data.error.message);
-  }
-  if (!data.data) {
-    return data;
-  }
-  return data.data;
+  return ar;
 }, rejectedInterceptor);
 
 export class HttpClient {

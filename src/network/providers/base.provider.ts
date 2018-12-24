@@ -1,8 +1,6 @@
 import { BaseServer } from "../servers/base.server";
 
-export class BaseProvider<T> {
-
-  constructor(protected server: BaseServer) {
-
-  }
+// tslint:disable-next-line:no-unnecessary-class
+export class BaseProvider<T = {}> {
+  protected server?: BaseServer;
 }

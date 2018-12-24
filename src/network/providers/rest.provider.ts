@@ -3,7 +3,7 @@ import { BaseServer } from "../servers/base.server";
 
 export class RestProvider<T> extends BaseProvider<T> {
   constructor(protected server: BaseServer, protected endpoint: string) {
-    super(server);
+    super();
   }
   async create(data: T) {
     return this.server.post<T, T>(this.endpoint, data).then(res => res.data);

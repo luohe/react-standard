@@ -3,10 +3,10 @@ import { RestProvider } from "./rest.provider";
 
 export class TodoProvider extends RestProvider<{ text: string; completed: boolean }> {
   constructor() {
-    super(new ServerOneServer(), "todo");
+    super(new ServerOneServer(), "/git");
   }
 
-  async getFilterData(id: string) {
+  public async getFilterData(id: string) {
     Promise.all([
       this.server.get("").then(),
       this.server.get(""),
