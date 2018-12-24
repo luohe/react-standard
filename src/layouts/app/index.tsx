@@ -40,13 +40,13 @@ const routes: RouteConfig[] = [
   {
     key: "/home",
     icon: <Link to="/home"><Icon type="home"/></Link>,
-    text: <Link to="/home">home</Link>,
+    text: <Link to="/home">大屏</Link>,
     routes: [],
   },
   {
     key: "/page-1",
     icon: <Link to="/page-1"><Icon type="bars"/></Link>,
-    text: <Link to="/page-1">Page 1</Link>,
+    text: <Link to="/page-1">基本功能</Link>,
     routes: [],
   },
   {
