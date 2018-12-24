@@ -7,14 +7,13 @@ import { UserContext } from "../../contexts/user";
 import { LoadingContext, LoadingState } from "../../contexts/loding";
 import { withContext } from "../../contexts";
 import { PropsType } from "../../reducers/global-state-1";
-import { ClassificationLayer, WrapGeojsonLayer, BaseLayer, MapPosition } from "@gago-react-gl/gago-react-gl";
+import { ClassificationLayer, WrapGeojsonLayer, MapPosition } from "@gago-react-gl/gago-react-gl";
 import { Tabs, TabPanel } from "@gago/frame/es/siders/side-bar";
-import { globalColorPalette1 } from "@gago/frame/es/colors/default";
 import { Card1 } from "@gago/frame/es/cards/card-1";
-import { Row, Col, Checkbox } from "antd";
 import { ITable } from "@gago/frame/es/interface/chart";
-import { CropAreaBadge } from "@gago/frame/es/charts/crop-area-badge";
-import { CropAreaChart } from "@gago/frame/es/charts/crop-area-chart";
+import { colorPalette as colorPaletteOrigin } from "../../color-palette";
+
+const colorPalette = { ...colorPaletteOrigin, subColor: ["#47d1af", "#6c94ea", ...colorPaletteOrigin.subColor] };
 interface Crops {
   corn: string;
   other: string;
@@ -111,8 +110,8 @@ class Page1 extends React.Component<PropsType<typeof mstp, typeof mdtp> & Loadin
           }}
           insideActiveSorts={insideActiveSorts}
           insideColors={{
-            corn: "#47d1af",
-            other: "#6c94ea",
+            corn: colorPalette.subColor[0],
+            other: colorPalette.subColor[1],
           }}
         />
         <WrapGeojsonLayer
@@ -130,12 +129,12 @@ class Page1 extends React.Component<PropsType<typeof mstp, typeof mdtp> & Loadin
             textFiled="{Town}"
             // onClick={onClickLayer}
         />
-        <Tabs colorPalette={globalColorPalette1}>
+        <Tabs colorPalette={colorPalette}>
           <TabPanel title="第一个" key="1" >
             <Card1
               title="卡片一"
               showExpandButton
-              colorPalette={globalColorPalette1}
+              colorPalette={colorPalette}
               rightComponent={null}
             >
               <UserContext.Consumer>

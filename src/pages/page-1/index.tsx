@@ -9,12 +9,14 @@ import { withContext } from "../../contexts";
 import { PropsType } from "../../reducers/global-state-1";
 import { ClassificationLayer, WrapGeojsonLayer, BaseLayer, MapPosition } from "@gago-react-gl/gago-react-gl";
 import { Tabs, TabPanel } from "@gago/frame/es/siders/side-bar";
-import { globalColorPalette1 } from "@gago/frame/es/colors/default";
 import { Card1 } from "@gago/frame/es/cards/card-1";
 import { Row, Col, Checkbox } from "antd";
 import { ITable } from "@gago/frame/es/interface/chart";
 import { CropAreaBadge } from "@gago/frame/es/charts/crop-area-badge";
 import { CropAreaChart } from "@gago/frame/es/charts/crop-area-chart";
+import { colorPalette as colorPaletteOrigin } from "../../color-palette";
+
+const colorPalette = { ...colorPaletteOrigin, subColor: ["#47d1af", "#6c94ea", ...colorPaletteOrigin.subColor] };
 interface Crops {
   corn: string;
   other: string;
@@ -111,8 +113,8 @@ class Page1 extends React.Component<PropsType<typeof mstp, typeof mdtp> & Loadin
           }}
           insideActiveSorts={insideActiveSorts}
           insideColors={{
-            corn: "#47d1af",
-            other: "#6c94ea",
+            corn: colorPalette.subColor[0],
+            other: colorPalette.subColor[1],
           }}
         />
         <WrapGeojsonLayer
@@ -130,30 +132,30 @@ class Page1 extends React.Component<PropsType<typeof mstp, typeof mdtp> & Loadin
             textFiled="{Town}"
             // onClick={onClickLayer}
         />
-        <Tabs colorPalette={globalColorPalette1}>
+        <Tabs colorPalette={colorPalette}>
           <TabPanel key="a" title="卡片一">
             <Card1
               title="图表一"
               showExpandButton
-              colorPalette={globalColorPalette1}
+              colorPalette={colorPalette}
               rightComponent={null}
             >
-              <CropAreaBadge colorPalette={globalColorPalette1} chartData={cropAreaBadgeTable} />
+              <CropAreaBadge colorPalette={colorPalette} chartData={cropAreaBadgeTable} />
             </Card1>
             <Card1
               title="图表二"
               showExpandButton
-              colorPalette={globalColorPalette1}
+              colorPalette={colorPalette}
               rightComponent={null}
             >
                 <div style={{ height: 200 }}>
-                    <CropAreaChart colorPalette={globalColorPalette1} chartData={cropAreaChartTable} />
+                    <CropAreaChart colorPalette={colorPalette} chartData={cropAreaChartTable} />
                 </div>
             </Card1>
             <Card1
               title="图表三"
               showExpandButton
-              colorPalette={globalColorPalette1}
+              colorPalette={colorPalette}
               rightComponent={null}
             >
               <Row>
@@ -171,7 +173,7 @@ class Page1 extends React.Component<PropsType<typeof mstp, typeof mdtp> & Loadin
             </Card1>
           </TabPanel>
           <TabPanel key="b" title="卡片二">
-            <Card1 title="卡片二" colorPalette={globalColorPalette1}>
+            <Card1 title="卡片二" colorPalette={colorPalette}>
               卡片二
             </Card1>
           </TabPanel>

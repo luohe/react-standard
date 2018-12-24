@@ -4,17 +4,29 @@ import { Link, Route, withRouter, RouteComponentProps, Redirect } from "react-ro
 import styled from "styled-components";
 import { LoadingContext, LoadingState } from "../../contexts/loding";
 import { AppRoot1 } from "@gago/frame/es/app-roots/app-root-1";
-import { globalColorPalette1 } from "@gago/frame/es/colors/default";
 import { withContext } from "../../contexts";
 import { RouteConfig } from "@gago/frame/es/interface/nav";
-import { MapboxProvider, MapGL, mapDefault, BaseLayer, WrapGeojsonLayer } from "@gago-react-gl/gago-react-gl";
+import { MapboxProvider, MapGL, mapDefault, BaseLayer } from "@gago-react-gl/gago-react-gl";
 import { flatMapDeep } from "lodash";
 import { Icon } from "antd";
 import Page2 from "../../pages/page-2";
 import Page1 from "../../pages/page-1";
+import { colorPalette } from "../../color-palette";
 // tslint:disable:jsx-no-lambda jsx-no-multiline-js
-// tslint:disable-next-line:variable-name
+// tslint:disable:variable-name
+
 const Logo = styled.div`
+  height: 100%;
+  display: flex;
+  *:nth-child(1){
+    width: 32px;
+  }
+  *:nth-child(2){
+    line-height: 32px;
+    text-align: center;
+  }
+`;
+const MiniLogo = styled.div`
   display: inline-block;
   width: 100%;
   height: 100%;
@@ -37,10 +49,17 @@ const routes: RouteConfig[] = [
     routes: [],
   },
   {
-    key: "/page-2",
-    icon: <Link to="/page-2"><Icon type="bars"/></Link>,
-    text: <Link to="/page-2">redux</Link>,
-    routes: [],
+    key: "/sub-nav",
+    icon: <Icon type="bars"/>,
+    text: "一级导航",
+    routes: [
+      {
+        key: "/page-2",
+        icon: <Link to="/page-2"><Icon type="bars"/></Link>,
+        text: <Link to="/page-2">redux</Link>,
+        routes: [],
+      },
+    ],
   },
 ];
 // tslint:disable-next-line:variable-name
@@ -87,7 +106,7 @@ const RootStyle = styled.div`
 }
 
 .App-link {
-  color: #61dafb;
+  color: ${colorPalette.mainColor[6]};
 }
 
 @keyframes App-logo-spin {
@@ -117,7 +136,7 @@ class App extends Component<LoadingState & RouteComponentProps> {
       <RootStyle>
         <MapboxProvider>
           <AppRoot1
-            logoConfig={{ logo: <Logo/>, miniLogo: <Logo/> }}
+            logoConfig={{ logo: <Logo><MiniLogo/><div>react-standard</div></Logo>, miniLogo: <MiniLogo/> }}
             avatarConfig={{
               userName: "admin",
               avatar: <Icon type="user"/>,
@@ -126,7 +145,7 @@ class App extends Component<LoadingState & RouteComponentProps> {
               onLogout: () => ({}),
             }}
             navConfig={{ routes, selected: selectedRouteKey, routeOnClick: () => ({}) }}
-            colorPalette={globalColorPalette1}
+            colorPalette={colorPalette}
             navAutoHide={selectedRouteKey === "/home"}
           >
             <MapGL {...mapDefault}>
