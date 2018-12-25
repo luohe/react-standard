@@ -13,6 +13,8 @@ import Page2 from "../../pages/page-2";
 import Page1 from "../../pages/page-1";
 import { colorPalette } from "../../color-palette";
 import Home from "../../pages/home";
+import { hot } from "react-hot-loader";
+
 // tslint:disable:jsx-no-lambda jsx-no-multiline-js
 // tslint:disable:variable-name
 
@@ -166,4 +168,4 @@ class App extends Component<LoadingState & RouteComponentProps> {
   }
 }
 
-export default withRouter(withContext(LoadingContext)(App));
+export default hot(module)(withRouter(withContext(LoadingContext)(App)));
