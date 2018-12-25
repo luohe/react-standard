@@ -149,15 +149,16 @@ class App extends Component<LoadingState & RouteComponentProps> {
             colorPalette={colorPalette}
             navAutoHide={selectedRouteKey === "/home"}
           >
-            <Switch>
-              <MapGL {...mapDefault}>
-                <BaseLayer id="base-layer" type="Google_Normal_Map"/>
-                <Route path={"/home"} component={Home} />
+            <MapGL {...mapDefault}>
+              <BaseLayer id="base-layer" type="Google_Normal_Map"/>
+              <Switch>
+                {/** 这里使用render是为了hack路由切换页面不刷新的问题 */}
+                <Route path={"/home"} render={() => <Home/>} />
                 <Route path={"/page-1"} component={Page1} />
                 <Route path={"/page-2"} component={Page2} />
-                <Redirect path={"/"} to={"/page-1"}/>
-              </MapGL>
-            </Switch>
+                <Redirect exact path={"/"} to={"/page-1"}/>
+              </Switch>
+            </MapGL>
           </AppRoot1>
           </MapboxProvider>
       </RootStyle>
