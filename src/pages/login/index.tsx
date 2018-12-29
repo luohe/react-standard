@@ -5,9 +5,9 @@ import { withContext } from "../../contexts";
 /** 默认state */
 const defaultState = {
   /** 用户名 */
-  username: "",
+  username: "admin",
   /** 密码 */
-  password: "",
+  password: "123456",
 };
 
 /**
