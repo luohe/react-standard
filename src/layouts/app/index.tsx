@@ -14,6 +14,8 @@ import Page1 from "../../pages/page-1";
 import { colorPalette } from "../../color-palette";
 import Home from "../../pages/home";
 import { hot } from "react-hot-loader";
+import Login from "../../pages/login";
+import { UserState, UserContext } from "../../contexts/user";
 
 // tslint:disable:jsx-no-lambda jsx-no-multiline-js
 // tslint:disable:variable-name
@@ -38,17 +40,27 @@ const MiniLogo = styled.div`
   background-position: center;
 `;
 
+/** 占据父容器100%宽高 */
+const LinkWithStyle = styled(Link)`
+  width: 100%;
+  height: 100%;
+  display: inline-block;
+  &:focus,*:focus{
+    text-decoration: unset;
+  }
+`;
+
 const routes: RouteConfig[] = [
   {
     key: "/home",
-    icon: <Link to="/home"><Icon type="home"/></Link>,
-    text: <Link to="/home">大屏</Link>,
+    icon: <LinkWithStyle to="/home"><Icon type="home"/></LinkWithStyle>,
+    text: <LinkWithStyle to="/home">大屏</LinkWithStyle>,
     routes: [],
   },
   {
     key: "/page-1",
-    icon: <Link to="/page-1"><Icon type="bars"/></Link>,
-    text: <Link to="/page-1">基本功能</Link>,
+    icon: <LinkWithStyle to="/page-1"><Icon type="bars"/></LinkWithStyle>,
+    text: <LinkWithStyle to="/page-1">基本功能</LinkWithStyle>,
     routes: [],
   },
   {
@@ -58,8 +70,8 @@ const routes: RouteConfig[] = [
     routes: [
       {
         key: "/page-2",
-        icon: <Link to="/page-2"><Icon type="bars"/></Link>,
-        text: <Link to="/page-2">redux</Link>,
+        icon: <LinkWithStyle to="/page-2"><Icon type="bars"/></LinkWithStyle>,
+        text: <LinkWithStyle to="/page-2">redux</LinkWithStyle>,
         routes: [],
       },
     ],
@@ -130,7 +142,15 @@ const RootStyle = styled.div`
 
 `;
 
-class App extends Component<LoadingState & RouteComponentProps> {
+/**
+ * 应用入口
+ *
+ * @author 张卓诚
+ * @date 2018-12-29
+ * @class App
+ * @extends {(Component<LoadingState & RouteComponentProps & UserState>)}
+ */
+class App extends Component<LoadingState & RouteComponentProps & UserState> {
   render() {
     const flatten = flatMapDeep(routes, (route) => [route, ...route.routes]);
     const selectedRoute: RouteConfig = flatten.filter(route => route.key === this.props.location.pathname)[0];
@@ -138,34 +158,37 @@ class App extends Component<LoadingState & RouteComponentProps> {
     return (
       <RootStyle>
         <MapboxProvider>
-          <AppRoot1
-            logoConfig={{ logo: <Logo><MiniLogo/><div>react-standard</div></Logo>, miniLogo: <MiniLogo/> }}
-            avatarConfig={{
-              userName: "admin",
-              avatar: <Icon type="user"/>,
-              isLogin: true,
-              onClick: () => ({}),
-              onLogout: () => ({}),
-            }}
-            navConfig={{ routes, selected: selectedRouteKey, routeOnClick: () => ({}) }}
-            colorPalette={colorPalette}
-            navAutoHide={selectedRouteKey === "/home"}
-          >
-            <MapGL {...mapDefault}>
-              <BaseLayer id="base-layer" type="Google_Normal_Map"/>
-              <Switch>
-                {/** 这里使用render是为了hack路由切换页面不刷新的问题 */}
-                <Route path={"/home"} render={() => <Home/>} />
-                <Route path={"/page-1"} component={Page1} />
-                <Route path={"/page-2"} component={Page2} />
-                <Redirect exact path={"/"} to={"/page-1"}/>
-              </Switch>
-            </MapGL>
-          </AppRoot1>
+          {
+            (this.props.isLogin && this.props.user) ? <AppRoot1
+              logoConfig={{ logo: <Logo><MiniLogo/><div>react-standard</div></Logo>, miniLogo: <MiniLogo/> }}
+              avatarConfig={{
+                userName: this.props.user.name,
+                avatar: <Icon type="user"/>,
+                isLogin: true,
+                onClick: () => ({}),
+                onLogout: () => this.props.logout(),
+              }}
+              navConfig={{ routes, selected: selectedRouteKey, routeOnClick: () => ({}) }}
+              colorPalette={colorPalette}
+              navAutoHide={selectedRouteKey === "/home"}
+            >
+              <MapGL {...mapDefault}>
+                <BaseLayer id="base-layer" type="Google_Normal_Map"/>
+                <Switch>
+                  {/** 这里使用render是为了hack路由切换页面不刷新的问题 */}
+                  <Route path={"/home"} render={() => <Home/>} />
+                  <Route path={"/page-1"} component={Page1} />
+                  <Route path={"/page-2"} component={Page2} />
+                  <Redirect exact path={"/"} to={"/page-1"}/>
+                </Switch>
+              </MapGL>
+            </AppRoot1> :
+            <Login />
+          }
           </MapboxProvider>
       </RootStyle>
     );
   }
 }
 
-export default hot(module)(withRouter(withContext(LoadingContext)(App)));
+export default hot(module)(withRouter(withContext(LoadingContext)(withContext(UserContext)(App))));

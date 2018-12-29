@@ -1,7 +1,7 @@
-import { BaseServer } from "./base.server";
+import { Business } from "./business.server";
 
-export class ServerOneServer extends BaseServer {
+export class ServerOneServer extends Business {
   constructor() {
-    super("https://baidu.com");
+    super("https://api.gagogroup.com");
   }
 }

@@ -10,7 +10,7 @@ export const Todo: React.SFC<{ key: string; todo: { text: string; completed: boo
         <UserContext.Consumer>
           {({ user }) =>
             <div style={{ backgroundColor: theme.backgroundColor, color: "white" }}>
-              {props.todo.text}{user.name}<button onClick={changeTheme}>切换主题</button>
+              {props.todo.text}{user ? user.name : "未登录"}<button onClick={changeTheme}>切换主题</button>
             </div>}
         </UserContext.Consumer>
       )}

@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "@gago-react-gl/gago-react-gl": "^1.0.0",
-    "@gago/frame": "^4.2.2",
+    "@gago/frame": "^4.3.4",
     "@gago/tslint-config-react": "^1.2.3",
     "@types/jest": "^23.3.9",
     "@types/lodash": "^4.14.118",
