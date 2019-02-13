@@ -2,10 +2,14 @@
 ## 目录结构
 目录结构功能参考目录中的README.md
 
-# typescript 的类型推导
-# context
-# no redux
-# no mobx
+## 关键特点
+* 强调 typescript 的类型安全
+* 局部状态使用 state
+* 全局状态使用 context
+* 样式逻辑分离使用container-component
+* 样式使用styled-components
+* 组件使用@gago/frame的接口
+* 使用 render props
 
 
 # 创建于
