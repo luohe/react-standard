@@ -11,6 +11,7 @@
 * 组件使用@gago/frame的接口
 * 使用 render props
 
+## [何时使用此项目](./MIGRATION.md)
 
 # 创建于
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
