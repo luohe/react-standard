@@ -5,9 +5,13 @@
 > https://www.rfc-editor.org/bcp/bcp14.txt#
 
 “必须”===“MUST”
+
 “必须不”===“MUST NOT”
+
 “可以”===“MAY”
+
 “强侵入模板”表示DVA这样的或类似的工具
+
 “此模板”===react 标准模板，在http://git.azure.gagogroup.cn/agri-base-framework/react-standard
 
 ## 简单的基本规则
