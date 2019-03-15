@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@gago-react-gl/gago-react-gl": "^2.0.0",
-    "@gago/frame": "^5.0.1",
+    "@gago-react-gl/gago-react-gl": "^3.0.2",
+    "@gago/frame": "^5.0.3",
     "@gago/tslint-config-react": "^1.2.3",
     "@types/jest": "^23.3.9",
     "@types/lodash": "^4.14.118",
@@ -19,6 +19,7 @@
     "antd": "~3.9.3",
     "axios": "^0.18.0",
     "echarts-for-react": "^2.0.14",
+    "gago-mapbox-gl": "^3.0.0",
     "lodash": "^4.17.11",
     "moment": "^2.22.2",
     "prettier": "^1.15.3",
