@@ -6,9 +6,9 @@ import React from "react";
  * @author 张卓诚
  * @date 2018-12-24
  * @class Page1
- * @extends {(React.Component<PropsType<typeof mstp, typeof mdtp> & LoadingState & CropState>)}
+ * @extends {(React.PureComponent<PropsType<typeof mstp, typeof mdtp> & LoadingState & CropState>)}
  */
-class Home extends React.Component<{}> {
+class Home extends React.PureComponent {
 
   render() {
     // tslint:disable:jsx-no-multiline-js

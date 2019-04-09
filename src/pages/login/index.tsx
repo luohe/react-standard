@@ -16,9 +16,9 @@ const defaultState = {
  * @author 张卓诚
  * @date 2018-12-24
  * @class Page1
- * @extends {(React.Component<PropsType<typeof mstp, typeof mdtp> & LoadingState & CropState>)}
+ * @extends {(React.PureComponent<PropsType<typeof mstp, typeof mdtp> & LoadingState & CropState>)}
  */
-class Login extends React.Component<UserState, typeof defaultState> {
+class Login extends React.PureComponent<UserState, typeof defaultState> {
 
   updateUsername = (event: React.ChangeEvent<HTMLInputElement>) => {
     this.setState(

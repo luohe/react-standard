@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { PureComponent, Component } from "react";
 import logo from "./logo.svg";
 import { Link, Route, withRouter, RouteComponentProps, Redirect, Switch } from "react-router-dom";
 import styled from "styled-components";
@@ -150,9 +150,9 @@ const RootStyle = styled.div`
  * @class App
  * @extends {(Component<LoadingState & RouteComponentProps & UserState>)}
  */
-class App extends Component<LoadingState & RouteComponentProps & UserState> {
+class App extends PureComponent<LoadingState & RouteComponentProps & UserState> {
   render() {
-    const flatten = flatMapDeep(routes, (route) => [route, ...route.routes]);
+    const flatten = flatMapDeep<RouteConfig, RouteConfig>(routes, (route) => [route, ...route.routes]);
     const selectedRoute: RouteConfig = flatten.filter(route => route.key === this.props.location.pathname)[0];
     const selectedRouteKey = selectedRoute ? selectedRoute.key : "";
     return (

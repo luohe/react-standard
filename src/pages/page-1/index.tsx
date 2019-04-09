@@ -32,9 +32,9 @@ const triggerOther = (state: CropState) => ({ other: !state.other });
  * @author 张卓诚
  * @date 2018-12-24
  * @class Page1
- * @extends {(React.Component<PropsType<typeof mstp, typeof mdtp> & LoadingState & CropState>)}
+ * @extends {(React.PureComponent<PropsType<typeof mstp, typeof mdtp> & LoadingState & CropState>)}
  */
-class Page1 extends React.Component<PropsType<typeof mstp, typeof mdtp> & LoadingState & CropState> {
+class Page1 extends React.PureComponent<PropsType<typeof mstp, typeof mdtp> & LoadingState & CropState> {
   state: CropState = {
     corn: true,
     other: true,

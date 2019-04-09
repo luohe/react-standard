@@ -1,7 +1,7 @@
 import * as React from "react";
 import { TodoList } from "../../components/todo-list";
 
-export class Todos extends React.Component {
+export class Todos extends React.PureComponent {
   public state = {
     text: "new todo",
     todos: [
