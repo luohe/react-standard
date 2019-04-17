@@ -12,6 +12,9 @@ import { AxiosRequestConfig } from "axios";
 export class PublisherServer extends Business {
 
   constructor(protected token: string) {
+    // use extra config
+    // super(window.config.publisher);
+    // use local config
     super("https://api.gagogroup.cn");
   }
 

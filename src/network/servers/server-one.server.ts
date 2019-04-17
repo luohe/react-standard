@@ -2,6 +2,9 @@ import { Business } from "./business.server";
 
 export class ServerOneServer extends Business {
   constructor() {
-    super("https://api.gagogroup.com");
+    // use extra config
+    // super(window.config.publisher);
+    // use local config
+    super("https://api.gagogroup.cn");
   }
 }
