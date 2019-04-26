@@ -12,6 +12,7 @@ import { ITable } from "@gago/frame/es/interface/chart";
 import { CropAreaBadge } from "@gago/frame/es/charts/crop-area-badge";
 import { CropAreaChart } from "@gago/frame/es/charts/crop-area-chart";
 import { colorPalette as colorPaletteOrigin } from "../../color-palette";
+import { MapContext, MapState } from "../../contexts/map";
 
 const colorPalette = { ...colorPaletteOrigin, subColor: ["#47d1af", "#6c94ea", ...colorPaletteOrigin.subColor] };
 interface Crops {
@@ -34,13 +35,14 @@ const triggerOther = (state: CropState) => ({ other: !state.other });
  * @class Page1
  * @extends {(React.PureComponent<PropsType<typeof mstp, typeof mdtp> & LoadingState & CropState>)}
  */
-class Page1 extends React.PureComponent<PropsType<typeof mstp, typeof mdtp> & LoadingState & CropState> {
+class Page1 extends React.PureComponent<PropsType<typeof mstp, typeof mdtp> & LoadingState & CropState & MapState> {
   state: CropState = {
     corn: true,
     other: true,
   };
 
   render() {
+    console.log("map", this.props.map);
     // tslint:disable:jsx-no-multiline-js
     // tslint:disable:jsx-no-lambda
     const { corn, other } = this.state;
@@ -196,4 +198,4 @@ class Page1 extends React.PureComponent<PropsType<typeof mstp, typeof mdtp> & Lo
 
 const mstp = (store: Store) => ({ store });
 const mdtp = (dispatch: Dispatch<AppAction>) => ({ dispatch });
-export default withContext(LoadingContext)(Page1);
+export default withContext(LoadingContext)(withContext(MapContext)(Page1));

@@ -16,6 +16,7 @@ import Home from "../../pages/home";
 import { hot } from "react-hot-loader";
 import Login from "../../pages/login";
 import { UserState, UserContext } from "../../contexts/user";
+import { MapContext } from "../../contexts/map";
 
 // tslint:disable:jsx-no-lambda jsx-no-multiline-js
 // tslint:disable:variable-name
@@ -151,6 +152,9 @@ const RootStyle = styled.div`
  * @extends {(Component<LoadingState & RouteComponentProps & UserState>)}
  */
 class App extends PureComponent<LoadingState & RouteComponentProps & UserState> {
+  state = {
+    map: undefined as unknown as mapboxgl.Map,
+  };
   render() {
     const flatten = flatMapDeep<RouteConfig, RouteConfig>(routes, (route) => [route, ...route.routes]);
     const selectedRoute: RouteConfig = flatten.filter(route => route.key === this.props.location.pathname)[0];
@@ -172,15 +176,17 @@ class App extends PureComponent<LoadingState & RouteComponentProps & UserState> 
               colorPalette={colorPalette}
               navAutoHide={selectedRouteKey === "/home"}
             >
-              <MapGL {...mapDefault}>
-                <BaseLayer id="base-layer" type="Google_Normal_Map"/>
-                <Switch>
-                  {/** 这里使用render是为了hack路由切换页面不刷新的问题 */}
-                  <Route path={"/home"} render={() => <Home/>} />
-                  <Route path={"/page-1"} component={Page1} />
-                  <Route path={"/page-2"} component={Page2} />
-                  <Redirect exact path={"/"} to={"/page-1"}/>
-                </Switch>
+              <MapGL {...mapDefault} onLoad={this.mapOnLoad}>
+                <MapContext.Provider value={{ map: this.state.map }}>
+                  <BaseLayer id="base-layer" type="Google_Normal_Map"/>
+                  <Switch>
+                    {/** 这里使用render是为了hack路由切换页面不刷新的问题 */}
+                    <Route path={"/home"} render={() => <Home/>} />
+                    <Route path={"/page-1"} component={Page1} />
+                    <Route path={"/page-2"} component={Page2} />
+                    <Redirect exact path={"/"} to={"/page-1"}/>
+                  </Switch>
+                </MapContext.Provider>
               </MapGL>
             </AppRoot1> :
             <Login />
@@ -188,6 +194,12 @@ class App extends PureComponent<LoadingState & RouteComponentProps & UserState> 
           </MapboxProvider>
       </RootStyle>
     );
+  }
+
+  mapOnLoad = (e: mapboxgl.EventData) => {
+    this.setState({
+      map: e.target,
+    });
   }
 }
 
