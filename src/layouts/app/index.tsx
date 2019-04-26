@@ -153,6 +153,8 @@ const RootStyle = styled.div`
  */
 class App extends PureComponent<LoadingState & RouteComponentProps & UserState> {
   state = {
+    // 因为MapContex用于MapGL的内部，所以可以保证运行时map一定不是undefined
+    /** mapbox实例 */
     map: undefined as unknown as mapboxgl.Map,
   };
   render() {

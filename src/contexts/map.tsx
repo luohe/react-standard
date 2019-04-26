@@ -1,6 +1,8 @@
 import React from "react";
 const value = {
-  /** 地图mapbox实例 */
+  // 因为MapContex用于MapGL的内部，所以可以保证运行时map一定不是undefined
+  /** 地图mapbox实例
+   */
   map: undefined as unknown as mapboxgl.Map,
 };
 
