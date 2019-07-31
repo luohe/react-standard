@@ -7,19 +7,19 @@ export class BaseServer {
 
   }
 
-  public get<T>(url: string, setting?: AxiosRequestConfig) {
+  public async get<T>(url: string, setting?: AxiosRequestConfig) {
     return this.http.get<T>(url, { ...setting, baseURL: this.domian });
   }
 
-  public post<T, P = T>(url: string, data?: P, setting?: AxiosRequestConfig) {
+  public async post<T, P = T>(url: string, data?: P, setting?: AxiosRequestConfig) {
     return this.http.post<T, P>(url, data, { ...setting, baseURL: this.domian });
   }
 
-  public put<T, P = T>(url: string, data?: P, setting?: AxiosRequestConfig) {
+  public async put<T, P = T>(url: string, data?: P, setting?: AxiosRequestConfig) {
     return this.http.put<T, P>(url, data, { ...setting, baseURL: this.domian });
   }
 
-  public delete(url: string, setting?: AxiosRequestConfig) {
+  public async delete(url: string, setting?: AxiosRequestConfig) {
     return this.http.delete(url, { ...setting, baseURL: this.domian });
   }
 }

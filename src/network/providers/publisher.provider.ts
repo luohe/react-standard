@@ -18,13 +18,17 @@ import { BaseProvider } from "./base.provider";
  * @class PublisherProvide
  * @extends {BaseProvider<{}>}
  */
-export class PublisherProvide extends BaseProvider<{}> {
+export class PublisherProvide extends BaseProvider {
+  /** 服务器1 */
   serverOne = new PublisherServer("tokenOne");
+  /** 服务器2 */
   serverTwo = new PublisherServer("tokenTwo");
   /** 获取时间序列 */
   async getTimeLine(type: string) {
-    const result = await this.serverOne.get<{ data: {times: string[]} }>(`/publisher/v2/times/${type}`);
-    return result.data;
+    return this.serverOne.get<{
+      /** 时间序列 */
+      times: string[];
+    }>(`/publisher/v2/times/${type}`);
   }
 }
 

@@ -12,6 +12,7 @@ import { BaseProvider } from "./base.provider";
  * @extends {BaseProvider<User>}
  */
 export class UserProvider extends BaseProvider<User> {
+  /** 服务器1 */
   server = new ServerOneServer();
   constructor() {
     super();
@@ -28,7 +29,10 @@ export class UserProvider extends BaseProvider<User> {
    * @memberof UserProvider
    */
   async login(username: string, password: string) {
-    return this.server.post<User, {password: string} & User>("/auth", { password, name: username });
+    return this.server.post<User, {
+      /** 密码 */
+      password: string;
+    } & User>("/auth", { password, name: username });
   }
 
   /**

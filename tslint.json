@@ -94,13 +94,17 @@
                 "format": null,
                 "trailingUnderscore": "allow"
             }
-        ]
+        ],
+        "no-floating-promises": false,
+        "match-default-export-name": false,
+        "no-boolean-literal-compare": false
     },
     "linterOptions": {
         "exclude": [
             "src/**/*.test.ts",
             "**/test/**.ts",
             "**/*.d.ts",
+            "src/**/*.js",
             "node_modules/**"
         ]
     }

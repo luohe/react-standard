@@ -1,7 +1,8 @@
 import { ServerOneServer } from "../servers/server-one.server";
 import { RestProvider } from "./rest.provider";
+import { Todo } from "../../models/todo";
 
-export class TodoProvider extends RestProvider<{ text: string; completed: boolean }> {
+export class TodoProvider extends RestProvider<Todo> {
   constructor() {
     super(new ServerOneServer(), "/git");
   }

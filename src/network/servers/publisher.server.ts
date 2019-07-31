@@ -21,7 +21,7 @@ export class PublisherServer extends Business {
   public async get<T>(url: string, setting?: AxiosRequestConfig) {
     const finalSetting = { ...(setting ? setting : { params: {} }) };
     finalSetting.params = finalSetting.params ? { ...finalSetting.params, token: this.token } : { token: this.token };
-    return super.get<T>(url, { ...finalSetting });
+    return super.get<{data: T}>(url, { ...finalSetting }).then(result => result.data);
   }
 
 }

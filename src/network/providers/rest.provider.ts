@@ -6,16 +6,24 @@ export class RestProvider<T> extends BaseProvider<T> {
     super();
   }
   async create(data: T) {
-    return this.server.post<T, T>(this.endpoint, data).then(res => res.data);
+    return this.server.post<T>(this.endpoint, data).then(res => res.data);
   }
-  async update(data: T & { id: string }) {
-    return this.server.put<T, T>(this.endpoint, data).then(res => res.data);
+  async update(data: T & {
+    /** id */
+    id: string;
+  }) {
+    return this.server.put<T>(this.endpoint, data).then(res => res.data);
   }
   async delete(id: string) {
     // tslint:disable-next-line:prefer-template
     return this.server.delete(this.endpoint + "/" + id).then(res => res.data);
   }
   async query(query?: any) {
-    return this.server.get<{ data: T[]; total: number }>(this.endpoint, { params: query }).then(res => res.data);
+    return this.server.get<{
+      /** 数据 */
+      data: T[];
+      /** 总量 */
+      total: number;
+    }>(this.endpoint, { params: query }).then(res => res.data);
   }
 }
