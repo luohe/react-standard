@@ -22,6 +22,13 @@ Axios.interceptors.response.use((ar: AxiosResponse) => {
   return ar;
 }, rejectedInterceptor);
 
+/**
+ * 网络请求客户端
+ *
+ * @author 张卓诚
+ * @export
+ * @class HttpClient
+ */
 export class HttpClient {
   async get<T = any>(url: string, config?: AxiosRequestConfig): Promise<AxiosResponse<T>> {
     return Axios.get<T>(url, config);

@@ -18,6 +18,14 @@ export const UserContext = React.createContext(defaultValue);
 
 export type UserState = typeof defaultValue;
 
+/**
+ * 用户状态
+ *
+ * @author 张卓诚
+ * @export
+ * @class UserContextDefaultProvider
+ * @extends {React.Component<{}, UserState, {}>}
+ */
 export class UserContextDefaultProvider extends React.Component<{}, UserState, {}> {
 
   /**
@@ -45,6 +53,7 @@ export class UserContextDefaultProvider extends React.Component<{}, UserState, {
     );
   }
 
+  /** 登陆 */
   login = async (username: string, password: string) => {
     // return userProvider.login(username, password).then(
     return userProvider.mockLogin(username, password).then(
@@ -58,6 +67,11 @@ export class UserContextDefaultProvider extends React.Component<{}, UserState, {
     );
   }
 
+  /**
+   * 登出
+   *
+   * @memberof UserContextDefaultProvider
+   */
   logout = async () => {
     return userProvider.logout()
       .then(

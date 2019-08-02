@@ -97,7 +97,26 @@
         ],
         "no-floating-promises": false,
         "match-default-export-name": false,
-        "no-boolean-literal-compare": false
+        "no-boolean-literal-compare": false,
+        "completed-docs": [
+            true, {
+                "classes": true,
+                "methods":{
+                    "locations": ["simply-typed"],
+                    "ignores":[
+                        {"prefix": "render"},
+                        {"prefix": "component"}
+                    ]
+                },
+                "properties": {
+                    "locations": ["simply-typed"],
+                    "ignores":[
+                        {"prefix": "state"},
+                        {"prefix": "defaultProps", "suffix":"defaultProps"}
+                    ]
+                }
+            }
+        ]
     },
     "linterOptions": {
         "exclude": [

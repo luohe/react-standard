@@ -198,6 +198,11 @@ class App extends PureComponent<LoadingState & RouteComponentProps & UserState> 
     );
   }
 
+  /**
+   * 地图已加载
+   *
+   * @memberof App
+   */
   mapOnLoad = (e: mapboxgl.EventData) => {
     this.setState({
       map: e.target,

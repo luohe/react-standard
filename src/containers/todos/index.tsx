@@ -1,6 +1,14 @@
 import * as React from "react";
 import { TodoList } from "../../components/todo-list";
 
+/**
+ * 待办事项列表
+ *
+ * @author 张卓诚
+ * @export
+ * @class Todos
+ * @extends {React.PureComponent}
+ */
 export class Todos extends React.PureComponent {
   public state = {
     text: "new todo",
@@ -8,10 +16,21 @@ export class Todos extends React.PureComponent {
       { text: "task1", completed: true },
     ],
   };
+
+  /**
+   * 更换文本
+   *
+   * @memberof Todos
+   */
   public changeText = (event: any) => {
     this.setState({ text: event.target.value });
   }
 
+  /**
+   * 增加事项
+   *
+   * @memberof Todos
+   */
   public add = () => {
     this.setState(
       {
@@ -21,6 +40,11 @@ export class Todos extends React.PureComponent {
     );
   }
 
+  /**
+   * 按回车提交事项
+   *
+   * @memberof Todos
+   */
   public enter = (event: React.KeyboardEvent<HTMLInputElement>) => {
     if (event.key === "Enter") {
       this.add();

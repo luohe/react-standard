@@ -11,7 +11,20 @@ export type LoadingState = typeof value;
 // tslint:disable-next-line:variable-name
 export const LoadingContext = React.createContext(value);
 
+/**
+ * 加载状态context
+ *
+ * @author 张卓诚
+ * @export
+ * @class LoadingContextDefaultProvider
+ * @extends {React.Component<{}, LoadingState, {}>}
+ */
 export class LoadingContextDefaultProvider extends React.Component<{}, LoadingState, {}> {
+  /**
+   * 显示
+   *
+   * @memberof LoadingContextDefaultProvider
+   */
   show = () => {
     if (this.state.isShow === false) {
       this.setState({
@@ -20,6 +33,11 @@ export class LoadingContextDefaultProvider extends React.Component<{}, LoadingSt
     }
   }
 
+  /**
+   * 隐藏
+   *
+   * @memberof LoadingContextDefaultProvider
+   */
   dissmiss = () => {
     if (this.state.isShow === true) {
       this.setState({
