@@ -4,7 +4,11 @@
     ],
     "rules": {
         "completed-docs": [
-            true, "properties"
+            true, 
+            {
+                "methods": true,
+                "properties": true
+            }
         ]
     }
 }

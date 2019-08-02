@@ -7,6 +7,7 @@ export class TodoProvider extends RestProvider<Todo> {
     super(new ServerOneServer(), "/git");
   }
 
+  /** 获取过滤后的数据 */
   public async getFilterData(id: string) {
     Promise.all([
       this.server.get("").then(),

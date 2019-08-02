@@ -16,12 +16,16 @@ import { MapContext, MapState } from "../../contexts/map";
 
 const colorPalette = { ...colorPaletteOrigin, subColor: ["#47d1af", "#6c94ea", ...colorPaletteOrigin.subColor] };
 interface Crops {
+  /** 玉米 */
   corn: string;
+  /** 其他 */
   other: string;
 }
 
 interface CropState {
+  /** 玉米 */
   corn: boolean;
+  /** 其他 */
   other: boolean;
 }
 const triggerCorn = (state: CropState) => ({ corn: !state.corn });
@@ -188,9 +192,13 @@ class Page1 extends React.PureComponent<PropsType<typeof mstp, typeof mdtp> & Lo
       </div >
     );
   }
+
+  /** 切换玉米 */
   private triggerCorn_ = () => {
     this.setState(triggerCorn);
   }
+
+  /** 切换其他 */
   private triggerOther_ = () => {
     this.setState(triggerOther);
   }

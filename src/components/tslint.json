@@ -1,0 +1,18 @@
+{
+    "extends": [
+        "../../tslint.json"
+    ],
+    "rules": {
+        "completed-docs": [
+            true, {
+                "classes": true,
+                "methods":{
+                    "locations": ["simply-typed"]
+                },
+                "properties": {
+                    "locations": ["simply-typed"]
+                }
+            }
+        ]
+    }
+}

@@ -4,7 +4,7 @@
     ],
     "rules": {
         "completed-docs": [
-            true, "properties"
+            true, "properties", "types", "interfaces", "classes"
         ]
     }
 }

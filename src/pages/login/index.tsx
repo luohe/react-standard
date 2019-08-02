@@ -20,6 +20,7 @@ const defaultState = {
  */
 class Login extends React.PureComponent<UserState, typeof defaultState> {
 
+  /** 更新用户名 */
   updateUsername = (event: React.ChangeEvent<HTMLInputElement>) => {
     this.setState(
       {
@@ -28,6 +29,7 @@ class Login extends React.PureComponent<UserState, typeof defaultState> {
     );
   }
 
+  /** 更新密码 */
   updatePassword = (event: React.ChangeEvent<HTMLInputElement>) => {
     this.setState(
       {
@@ -36,7 +38,8 @@ class Login extends React.PureComponent<UserState, typeof defaultState> {
     );
   }
 
-  state = defaultState;
+  /** state */
+  state: typeof defaultState = defaultState;
 
   render() {
     // tslint:disable:jsx-no-multiline-js

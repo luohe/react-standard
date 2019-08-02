@@ -4,7 +4,89 @@
     ],
     "rules": {
         "completed-docs": [
-            true, "classes"
+            true, {
+                "classes": true,
+                "methods":{
+                    "locations": ["simply-typed"],
+                    "ignores":[
+                        {
+                            "prefix": "render"
+                        },
+                        {
+                            "prefix": "mapOnLoad"
+                        },
+                        {
+                            "prefix": "component"
+                        }
+                    ]
+                },
+                "properties": {
+                    "locations": ["simply-typed"],
+                    "ignores":[
+                        {
+                            "prefix": "render"
+                        },
+                        {
+                            "prefix": "mapOnLoad"
+                        },
+                        {
+                            "prefix": "component"
+                        },
+                        {
+                            "prefix": "name",
+                            "suffix": "name"
+                        },
+                        {
+                            "prefix": "key",
+                            "suffix": "key"
+                        },
+                        {
+                            "prefix": "c0",
+                            "suffix": "c0"
+                        },
+                        {
+                            "prefix": "c1",
+                            "suffix": "c1"
+                        },
+                        {
+                            "prefix": "c2",
+                            "suffix": "c2"
+                        },
+                        {
+                            "prefix": "c3",
+                            "suffix": "c3"
+                        },
+                        {
+                            "prefix": "c4",
+                            "suffix": "c4"
+                        },
+                        {
+                            "prefix": "c5",
+                            "suffix": "c5"
+                        },
+                        {
+                            "prefix": "c6",
+                            "suffix": "c6"
+                        },
+                        {
+                            "prefix": "c7",
+                            "suffix": "c7"
+                        },
+                        {
+                            "prefix": "c8",
+                            "suffix": "c8"
+                        },
+                        {
+                            "prefix": "c9",
+                            "suffix": "c9"
+                        },
+                        {
+                            "prefix": "c10",
+                            "suffix": "c10"
+                        }
+                    ]
+                }
+            }
         ]
     }
 }
