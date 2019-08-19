@@ -57,7 +57,8 @@ export class UserProvider extends BaseProvider<User> {
    * @memberof UserProvider
    */
   async checkLogin() {
-    return this.server.get<User>("/auth");
+    return this.mockLogin("admin", "123456");
+    // return this.server.get<User>("/auth");
   }
 
   /**
