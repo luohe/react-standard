@@ -1,6 +1,6 @@
 {
   "name": "@gago/react-standard",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "main": "es/components/index.js",
   "typings": "es/components/index.d.ts",
   "files": [

@@ -17,4 +17,3 @@ export const rootReducer = { globalState1 };
 export interface Store {
   globalState1: State;
 }
-
