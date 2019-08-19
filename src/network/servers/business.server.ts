@@ -11,9 +11,6 @@ import { AxiosRequestConfig } from "axios";
  * @extends {BaseServer}
  */
 export class Business extends BaseServer {
-  constructor(domain: string) {
-    super(domain);
-  }
 
   /**
    * get
