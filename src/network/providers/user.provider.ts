@@ -14,9 +14,6 @@ import { BaseProvider } from "./base.provider";
 export class UserProvider extends BaseProvider<User> {
   /** 服务器1 */
   server = new ServerOneServer();
-  constructor() {
-    super();
-  }
 
   /**
    * 登陆

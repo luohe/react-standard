@@ -1,4 +1,4 @@
-import React, { PureComponent, Component } from "react";
+import React, { PureComponent } from "react";
 import logo from "./logo.svg";
 import { Link, Route, withRouter, RouteComponentProps, Redirect, Switch } from "react-router-dom";
 import styled from "styled-components";
@@ -78,24 +78,6 @@ const routes: RouteConfig[] = [
     ],
   },
 ];
-// tslint:disable-next-line:variable-name
-const Nav = styled.div`
-  text-align: left;
-  display: block;
-  width: 100%;
-  a{
-    text-align: center;
-    /* This renders the buttons above... Edit me! */
-    display: inline-block;
-    border-radius: 3px;
-    padding: 0.5rem 0;
-    margin: 0.5rem 1rem;
-    width: 11rem;
-    background: transparent;
-    color: white;
-    border: 2px solid white;
-  }
-`;
 
 // tslint:disable-next-line:variable-name
 const RootStyle = styled.div`
