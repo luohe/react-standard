@@ -105,14 +105,21 @@
                     "locations": ["simply-typed"],
                     "ignores":[
                         {"prefix": "render"},
-                        {"prefix": "component"}
+                        {"prefix": "component"},
+                        {"prefix": "shouldComponentUpdate", "suffix":"shouldComponentUpdate"},
+                        {"prefix": "getChartOption", "suffix":"getChartOption"}
                     ]
                 },
                 "properties": {
                     "locations": ["simply-typed"],
                     "ignores":[
-                        {"prefix": "state"},
-                        {"prefix": "defaultProps", "suffix":"defaultProps"}
+                        {"prefix": "state", "suffix":"state"},
+                        {"prefix": "defaultProps", "suffix":"defaultProps"},
+                        {"prefix": "background", "suffix":"background"},
+                        {"prefix": "color", "suffix":"color"},
+                        {"prefix": "name", "suffix":"name"},
+                        {"prefix": "key", "suffix":"key"},
+                        {"prefix": "value", "suffix":"value"}
                     ]
                 }
             }
