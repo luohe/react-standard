@@ -23,7 +23,7 @@
   "devDependencies": {
     "@gago-react-gl/core": "^3.0.3",
     "@gago-react-gl/gago-react-gl": "^3.0.2",
-    "@gago/frame": "^7.0.0",
+    "@gago/frame": "^8.2.9",
     "@gago/tslint-config-react": "^1.2.3",
     "@types/jest": "^23.3.9",
     "@types/lodash": "^4.14.118",
