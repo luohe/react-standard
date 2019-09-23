@@ -10,6 +10,8 @@
 * 样式使用styled-components
 * 组件使用@gago/frame的接口
 * 使用 render props
+* 不允许增加目录深度（public/static例外）
+* 组件使用的图片应放在组件文件夹内
 
 ## [何时使用此项目](./MIGRATION.md)
 
