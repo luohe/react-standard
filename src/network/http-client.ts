@@ -11,7 +11,9 @@
 import Axios, { AxiosResponse, AxiosRequestConfig } from "axios";
 
 function rejectedInterceptor(error: any) {
-  console.error(error);
+  // do some things.
+  // console.error(error);
+  throw error;
 }
 
 Axios.interceptors.request.use(async (arc: AxiosRequestConfig) => {
