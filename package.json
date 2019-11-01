@@ -65,6 +65,7 @@
   "scripts": {
     "start": "react-app-rewired start",
     "build": "react-app-rewired build",
+    "serve-build": "npx live-server ./build",
     "test": "react-app-rewired test --env=jsdom",
     "eject": "react-scripts eject",
     "lib": "rm -rf es && npx webpack-cli --config build-lib/build.webpack.config.js && npx typescript@3.5.3 -p tsconfig.lib.json",
