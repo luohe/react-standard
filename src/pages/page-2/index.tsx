@@ -78,7 +78,7 @@ class Page1 extends React.PureComponent<PropsType<typeof mstp, typeof mdtp> & Lo
         />
         <WrapGeojsonLayer
             id="geojson"
-            data="static/data/xinlei.json"
+            data={`${process.env.PUBLIC_URL}/static/data/xinlei.json`}
             sourceMinzoom={5}
             sourceMaxzoom={15}
             showFill
