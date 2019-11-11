@@ -71,7 +71,7 @@
     "lib": "rm -rf es && npx webpack-cli --config build-lib/build.webpack.config.js && npx typescript@3.5.3 -p tsconfig.lib.json",
     "prepublishOnly": "npm run lib",
     "publish-beta": "npm publish --tag beta",
-    "lint": "tslint -p tsconfig.json",
+    "lint": "npx tslint -p tsconfig.json --fix",
     "precommit": "lint-staged"
   },
   "eslintConfig": {
@@ -90,7 +90,7 @@
   },
   "lint-staged": {
     "src/**/*.{ts,tsx}": [
-      "tslint -p tsconfig.json --fix",
+      "npx tslint -p tsconfig.json --fix",
       "git add"
     ],
     "src/**/*.{json,css}": [
